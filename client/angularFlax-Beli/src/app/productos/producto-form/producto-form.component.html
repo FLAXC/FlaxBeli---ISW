@@ -1,0 +1,70 @@
+<h1>Hola bro, hasta aquí llegúe, no se por que no me carga nada xD</h1>
+<!-- <form [formGroup]="productoForm" novalidate (ngSubmit)="isCreate ? crearProducto(): actualizarProducto()">
+    <input type="hidden" formControlName="id" />
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>{{titleForm}}Producto</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput #codigoMesa maxlength="20" placeholder="Código" formControlName="codigoMesa">
+              <mat-hint align="end">{{codigoMesa.value.length}} / 20</mat-hint>
+              <mat-error *ngIf="mesaForm.controls['codigoMesa'].hasError('required')">
+                Código de mesa es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput #codigoMesa maxlength="20" placeholder="Capacidad" formControlName="capacidad">
+                <mat-error *ngIf="mesaForm.controls['capacidad'].hasError('required')">
+                  Capacidad es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col" *ngIf="restaurantesList">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Restaurantes" formControlName="restaurante" >
+                  <mat-option *ngFor="let g of restaurantesList" [value]="g.id">
+                    {{ g.nombre }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="mesaForm.controls['restaurante'].hasError('required')">
+                  Restaurante es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col">
+              <mat-label>Estado</mat-label><br>
+              <mat-radio-group formControlName="estadoMesa">
+                <mat-radio-button value="Desocupada">Desocupada</mat-radio-button>
+                <mat-radio-button value="Reservada">Reservada</mat-radio-button>
+                <mat-radio-button value="Ocupada">Ocupada</mat-radio-button>
+                <mat-radio-button value="ComandaRegistrada">Comanda Registrada</mat-radio-button>
+                <mat-radio-button value="PorPagar">Por Pagar</mat-radio-button>
+                <mat-radio-button value="Inactiva">Inactiva</mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="mesaForm.controls['estadoMesa'].touched &&
+               mesaForm.controls['estadoMesa'].hasError('required')">
+                Estado es <strong>requerido</strong>
+              </mat-error>
+            </div>
+          </div>
+      </mat-card-content>
+      
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+   -->

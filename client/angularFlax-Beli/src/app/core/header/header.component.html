@@ -10,13 +10,13 @@
     <button class="buttonMenu" mat-button [matMenuTriggerFor]="aboveMenu">Mesas</button>
     <mat-menu #aboveMenu="matMenu" yPosition="above" overlapTrigger="false">
       <button  class="buttonMenu" mat-menu-item [routerLink]="['/mesas-restaurante']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Mesas por Restaurante</button>
-      <button  class="buttonMenu" mat-menu-item [routerLink]="['/mesas/all']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Listado de mesas</button>
+      <button  class="buttonMenu" mat-menu-item [routerLink]="['/mesas/all']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Mantenimiento</button>
     </mat-menu>
     
 
     <button class="buttonMenu" mat-button [matMenuTriggerFor]="productos">Productos</button>
     <mat-menu #productos="matMenu" yPosition="above" overlapTrigger="false">
-      <button  class="buttonMenu" mat-menu-item [routerLink]="['/productos/all']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Listado de productos</button>
+      <button  class="buttonMenu" mat-menu-item [routerLink]="['/productos/all']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Mantenimiento</button>
     </mat-menu>
 
 
