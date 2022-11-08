@@ -26,6 +26,7 @@ export class ProductosAllComponent implements AfterViewInit {
   displayedColumns = ['id','nombre','precio',"estado", 'categoria',"acciones"];
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private gService:GenericService,
     private dialog:MatDialog
@@ -56,6 +57,19 @@ export class ProductosAllComponent implements AfterViewInit {
       id:id
     };
     this.dialog.open(ProductosDetailComponent,dialogConfig);
+  }
+  
+
+  crearProducto() {
+    this.router.navigate(['/productos/create'], {
+      relativeTo: this.route,
+    });
+  }
+
+  actualizarProducto(id: number) {
+    this.router.navigate(['/productos/update', id], {
+      relativeTo: this.route,
+    });
   }
 
 }
