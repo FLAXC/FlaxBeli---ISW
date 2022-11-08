@@ -34,7 +34,7 @@ export class MesaFormComponent implements OnInit {
           if(this.idMesa!=undefined){
             this.isCreate=false;
             this.titleForm="Actualizar";
-             //Obtener videojuego a actualizar del API
+             //Obtener mesa a actualizar del API
              this.gService.get('mesa',this.idMesa).pipe(takeUntil(this.destroy$))
              .subscribe((data:any)=>{
               this.mesaInfo=data;
@@ -78,7 +78,6 @@ export class MesaFormComponent implements OnInit {
       return this.mesaForm.controls[control].hasError(error);
     };
 
-  //Crear Videojueogo
   crearMesa(): void {
     //Establecer submit verdadero
     this.submitted=true;
@@ -99,19 +98,14 @@ export class MesaFormComponent implements OnInit {
     });
   
   }
-  //Actualizar Videojuego
   actualizarMesa(){
-    //Establecer submit verdadero
     this.submitted=true;
-    //Verificar validación
     if(this.mesaForm.invalid){
       return;
     }
     console.log(this.mesaForm.value);
-    //Accion API create enviando toda la informacion del formulario
     this.gService.update('mesa',this.mesaForm.value)
     .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
-      //Obtener respuesta
       this.respMesa=data;
       this.router.navigate(['/mesas/all'],{
         queryParams: {update:'true'}
@@ -127,7 +121,6 @@ export class MesaFormComponent implements OnInit {
   }
   ngOnDestroy() {
     this.destroy$.next(true);
-    // Desinscribirse
     this.destroy$.unsubscribe();
   }
 
