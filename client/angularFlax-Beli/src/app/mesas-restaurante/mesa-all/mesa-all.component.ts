@@ -23,7 +23,7 @@ export class MesaAllComponent implements AfterViewInit{
   dataSource= new MatTableDataSource<any>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id','codigoMesa',"estadoMesa","acciones"];
+  displayedColumns = ['id','codigoMesa',"estadoMesa","acciones","acciones2"];
   constructor( private router: Router,
     private route: ActivatedRoute,
     private gService:GenericService,
