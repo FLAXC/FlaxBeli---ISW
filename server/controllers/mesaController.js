@@ -41,7 +41,6 @@ module.exports.create = async (request, response, next) => {
 module.exports.update = async (request, response, next) => {
   let mesa = request.body;
   let idMesa = parseInt(request.params.id);
-  //Obtener videojuego viejo
   const mesaVieja = await prisma.mesa.findUnique({
     where: { id: idMesa },
     include: {
@@ -62,7 +61,6 @@ module.exports.update = async (request, response, next) => {
       capacidad: mesa.capacidad,
       estodoMesa: mesa.estodoMesa,
       restauranteId: {
-        //Generos tiene que ser {id:valor}
         disconnect: mesaVieja.restaurante,    
         connect: mesa.restaurante,
       },
