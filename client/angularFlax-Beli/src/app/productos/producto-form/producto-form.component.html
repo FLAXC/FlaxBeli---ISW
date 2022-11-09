@@ -1,3 +1,4 @@
+<body>
 <form [formGroup]="productoForm" novalidate (ngSubmit)="isCreate ? crearProducto(): actualizarProducto()">
   <input type="hidden" formControlName="id" />
   <mat-card class="shipping-card">
@@ -49,7 +50,7 @@
             <div class="col">
               <mat-label>Estado</mat-label><br>
               <mat-radio-group formControlName="estado">
-                <mat-radio-button value="Habilitado">A la venta</mat-radio-button>
+                <mat-radio-button value="Habilitado">A la venta</mat-radio-button><br>
                 <mat-radio-button value="Inhabilitado">Agotado</mat-radio-button>
               </mat-radio-group>
               <mat-error *ngIf="productoForm.controls['estado'].touched &&
@@ -58,13 +59,14 @@
               </mat-error>
             </div>
           </div>
+          <br>
           <div class="row">
             <div class="col">
               <mat-label>Categoria</mat-label><br>
               <mat-radio-group formControlName="categoria">
-                <mat-radio-button value="Desayunos">Desayunos</mat-radio-button>
-                <mat-radio-button value="Almuerzos">Almmuerzos</mat-radio-button>
-                <mat-radio-button value="ComidasRapidas">Comidas Rápidas</mat-radio-button>
+                <mat-radio-button value="Desayunos">Desayunos</mat-radio-button> <br>
+                <mat-radio-button value="Almuerzos">Almmuerzos</mat-radio-button><br>
+                <mat-radio-button value="ComidasRapidas">Comidas Rápidas</mat-radio-button><br>
               </mat-radio-group>
               <mat-error *ngIf="productoForm.controls['categoria'].touched &&
                productoForm.controls['categoria'].hasError('required')">
@@ -93,5 +95,6 @@
     </mat-card-actions>
   </mat-card>
 </form>
+</body>
 
   

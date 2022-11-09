@@ -1,3 +1,4 @@
+<body>
 <div class="mat-elevation-z8" *ngIf="dataSource">
 <div style="background-color:black ;">
   <mat-card-title style="color: white;">
@@ -72,8 +73,9 @@
     <mat-paginator #paginator
         [length]="dataSource?.data?.length"
         [pageIndex]="0"
-        [pageSize]="10"
-        [pageSizeOptions]="[3, 5, 10]"
+        [pageSize]="12"
+        [pageSizeOptions]="[5, 10, 12]"
         aria-label="Seleccione una página">
     </mat-paginator>
   </div>
+</body>
