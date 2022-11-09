@@ -12,6 +12,7 @@ module.exports.get = async (request, response, next) => {
   response.json(mesas);
 };
 
+
 module.exports.getById = async (request, response, next) => {
   let id = parseInt(request.params.id);
   const mesa = await prisma.mesa.findUnique({
@@ -51,6 +52,7 @@ module.exports.getById = async (request, response, next) => {
 
   }
 }
+
 module.exports.create = async (request, response, next) => {
   let mesa = request.body;
   let restauranteMesa = mesa.restauranteId;
