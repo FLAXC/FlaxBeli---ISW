@@ -69,7 +69,8 @@ module.exports.create = async (request, response, next) => {
       codigoMesa:codigo,
       capacidad: parseInt(mesa.capacidad),
       estadoMesa: mesa.estadoMesa,
-      restauranteId: mesa.restauranteId,
+
+      restauranteId:mesa.restauranteId,
     },
   });
   response.json(newMesa);
@@ -90,7 +91,8 @@ module.exports.update = async (request, response, next) => {
       codigoMesa: mesa.codigoMesa,
       capacidad: parseInt(mesa.capacidad),
       estodoMesa: mesa.estodoMesa,
-      restauranteId: mesa.restauranteId,
+
+      restauranteId: mesa.restauranteId
     },
   });
   response.json(newMesa);

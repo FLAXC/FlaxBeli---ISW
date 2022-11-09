@@ -10,3 +10,12 @@ th{
 td{
   color: yellow;
 }
+
+.mat-paginator{
+background-color:yellow;
+}
+
+
+body {
+  background-color: black;
+}
