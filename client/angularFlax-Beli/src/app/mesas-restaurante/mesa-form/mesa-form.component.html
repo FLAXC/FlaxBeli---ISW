@@ -6,17 +6,6 @@
       </mat-card-header>
       <mat-card-content>
         <div class="row">
-          <div class="col">
-            <mat-form-field class="full-width">
-              <input matInput #codigoMesa maxlength="20" placeholder="Código" formControlName="codigoMesa">
-              <mat-hint align="end">{{codigoMesa.value.length}} / 20</mat-hint>
-              <mat-error *ngIf="mesaForm.controls['codigoMesa'].hasError('required')">
-                Código de mesa es <strong>requerido</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
                 <input matInput #codigoMesa maxlength="20" placeholder="Capacidad" formControlName="capacidad">
