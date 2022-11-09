@@ -150,10 +150,52 @@ async function mail() {
         {
             data: {
                 estado: EstadoComanda.Registrada,
-                notas: 'Sin tomate',
+                notas: 'Sin queso',
                 usuarioId: 1,
                 facturaId: 1,
                 mesaId:2,
+                productos: {
+                    createMany:{
+                        data:[
+                            {cantidad:2, productoId:1},
+                            {cantidad:1, productoId:2}
+                        ]
+                    }
+                },
+                subtotal: 5500,
+            }
+        }
+    );
+
+    await prisma.pedido.create(
+        {
+            data: {
+                estado: EstadoComanda.Pendientes,
+                notas: 'Sin tomate',
+                usuarioId: 1,
+                facturaId: 1,
+                mesaId:3,
+                productos: {
+                    createMany:{
+                        data:[
+                            {cantidad:2, productoId:1},
+                            {cantidad:1, productoId:2}
+                        ]
+                    }
+                },
+                subtotal: 5500,
+            }
+        }
+    );
+
+    await prisma.pedido.create(
+        {
+            data: {
+                estado: EstadoComanda.Registrada,
+                notas: 'sin lechuga',
+                usuarioId: 1,
+                facturaId: 1,
+                mesaId:3,
                 productos: {
                     createMany:{
                         data:[
