@@ -11,3 +11,13 @@
     color: yellow;
   }
   
+  .mat-paginator{
+    background-color:yellow;
+    color: black
+    }
+    
+    
+    body {
+      background-color: black;
+    }
+    

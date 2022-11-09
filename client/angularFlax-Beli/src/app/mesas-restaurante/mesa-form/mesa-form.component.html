@@ -1,8 +1,9 @@
+<body>
 <form [formGroup]="mesaForm" novalidate (ngSubmit)="isCreate ? crearMesa(): actualizarMesa()">
     <input type="hidden" formControlName="id" />
     <mat-card class="shipping-card">
       <mat-card-header>
-        <mat-card-title>{{titleForm}}Mesa</mat-card-title>
+        <mat-card-title>{{titleForm}} Mesa</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="row">
@@ -46,12 +47,12 @@
             <div class="col">
               <mat-label>Estado</mat-label><br>
               <mat-radio-group formControlName="estadoMesa">
-                <mat-radio-button value="Desocupada">Desocupada</mat-radio-button>
-                <mat-radio-button value="Reservada">Reservada</mat-radio-button>
-                <mat-radio-button value="Ocupada">Ocupada</mat-radio-button>
-                <mat-radio-button value="ComandaRegistrada">Comanda Registrada</mat-radio-button>
-                <mat-radio-button value="PorPagar">Por Pagar</mat-radio-button>
-                <mat-radio-button value="Inactiva">Inactiva</mat-radio-button>
+                <mat-radio-button value="Desocupada">Desocupada</mat-radio-button> <br>
+                <mat-radio-button value="Reservada">Reservada</mat-radio-button><br>
+                <mat-radio-button value="Ocupada">Ocupada</mat-radio-button><br>
+                <mat-radio-button value="ComandaRegistrada">Comanda Registrada</mat-radio-button><br>
+                <mat-radio-button value="PorPagar">Por Pagar</mat-radio-button><br>
+                <mat-radio-button value="Inactiva">Inactiva</mat-radio-button><br>
               </mat-radio-group>
               <mat-error *ngIf="mesaForm.controls['estadoMesa'].touched &&
                mesaForm.controls['estadoMesa'].hasError('required')">
@@ -65,4 +66,4 @@
       </mat-card-actions>
     </mat-card>
   </form>
-  
+</body>
