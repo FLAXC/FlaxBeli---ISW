@@ -24,7 +24,6 @@ export class MesaFormComponent implements OnInit {
     private router: Router,private activeRouter: ActivatedRoute) {
       this.formularioReactive();
       this.listaRestaurantes();
-    
   }
 
   ngOnInit(): void {

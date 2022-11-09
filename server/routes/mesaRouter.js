@@ -6,6 +6,7 @@ const mesaController=require("../controllers/mesaController");
 //Rutas de las mesas
 
 router.get("/",mesaController.get);
+
 router.post("/",mesaController.create);
 
 router.get("/:id",mesaController.getById);
