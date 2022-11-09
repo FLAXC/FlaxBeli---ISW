@@ -46,7 +46,7 @@ export class ProductoFormComponent implements OnInit {
                 precio:this.productoInfo.precio,
                 estado:this.productoInfo.estado,
                 categoria:this.productoInfo.categoria,
-                restaurante:this.productoInfo.restaurantes.map(({id}) => id)
+                restaurantes:this.productoInfo.restaurantes.map(({id}) => id)
               })
              });
           }

@@ -32,7 +32,7 @@ module.exports.create = async (request, response, next) => {
       codigoMesa: mesa.codigoMesa,
       capacidad: parseInt(mesa.capacidad),
       estadoMesa: mesa.estadoMesa,
-      restauranteId:mesa.restaurante,
+      restauranteId: mesa.restauranteId,
     },
   });
   response.json(newMesa);
@@ -53,7 +53,7 @@ module.exports.update = async (request, response, next) => {
       codigoMesa: mesa.codigoMesa,
       capacidad: parseInt(mesa.capacidad),
       estodoMesa: mesa.estodoMesa,
-      restauranteId: mesa.restaurante
+      restauranteId: mesa.restauranteId,
     },
   });
   response.json(newMesa);
