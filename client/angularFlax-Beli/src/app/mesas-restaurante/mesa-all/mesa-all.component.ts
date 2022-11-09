@@ -59,14 +59,15 @@ export class MesaAllComponent implements AfterViewInit{
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
-  actualizarMesa(id: number) {
-    this.router.navigate(['/mesas/update', id], {
-      relativeTo: this.route,
-    });
-  }
  
   crearMesa() {
     this.router.navigate(['/mesas/create'], {
+      relativeTo: this.route,
+    });
+  }
+
+  actualizarMesa(id: number) {
+    this.router.navigate(['/mesas/update', id], {
       relativeTo: this.route,
     });
   }

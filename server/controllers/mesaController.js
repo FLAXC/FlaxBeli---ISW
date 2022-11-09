@@ -27,27 +27,27 @@ module.exports.getById = async (request, response, next) => {
 };
 
  class Contador{
-  static m1 = 100;
-  static me2 = 200;
-  static me3 = 300;
+  static m11 = 100;
+  static me22 = 200;
+  static me33 = 300;
   constructor(id){
-    this._mesaRest1 = Contador.m1++;
-    this._mesa2 = Contador.me2++; 
-    this._mesa3 = Contador.me3++; 
+    this._mesa11 = Contador.m11++;
+    this._mesa22 = Contador.me22++; 
+    this._mesa33 = Contador.me33++; 
     this.idRest = id;
   }
 
     get  contadorMesas(){
     if(this.idRest == 2043)
     {
-      return this._mesaRest1;
+      return this._mesa11;
     }
     if(this.idRest == 1043)
     {
-      return this._mesa2;
+      return this._mesa22;
     }
     else{
-      return this._mesa3;
+      return this._mesa33;
     }
 
   }
@@ -82,16 +82,25 @@ module.exports.create = async (request, response, next) => {
 module.exports.update = async (request, response, next) => {
   let mesa = request.body;
   let idMesa = parseInt(request.params.id);
-  const mesaVieja = await prisma.mesa.findUnique({
-    where: { id: idMesa },
-  });
-
+  let restauranteMesa = mesa.restauranteId;
+  let codigo = "";
+  let  contador = new Contador(restauranteMesa);
+  console.log(contador);
+  if (restauranteMesa == 2043) {
+    codigo = "FB1-"+ contador.contadorMesas;
+  }
+  if(restauranteMesa == 1043){
+    codigo = "FB2-"+ contador.contadorMesas;
+  }
+  if(restauranteMesa == 4043 ){
+    codigo = "FB3-"+contador.contadorMesas;
+  }
   const newMesa = await prisma.mesa.update({
     where: {
       id: idMesa,
     },
     data: {
-      codigoMesa: mesa.codigoMesa,
+      codigoMesa: codigo,
       capacidad: parseInt(mesa.capacidad),
       estodoMesa: mesa.estodoMesa,
       restauranteId: mesa.restauranteId,

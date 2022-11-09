@@ -55,6 +55,7 @@ export class MesaFormComponent implements OnInit {
       //[null, Validators.required]
       this.mesaForm=this.fb.group({
         id:[null,null],
+        codigoMesa:[null,null],
         capacidad:[null, Validators.required],
         estadoMesa: [null, Validators.required],
         restauranteId:[null, Validators.required]
