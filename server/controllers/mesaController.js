@@ -24,12 +24,49 @@ module.exports.getById = async (request, response, next) => {
   });
   response.json(mesa);
 };
+class Contador{
+  static mesa1 = 100;
+  static m2 = 100;
+  static m3 = 100;
+  constructor(id){
+    this._mesaRest1 = Contador.mesa1++;
+    this._mesa2 = Contador.m2++; 
+    this._mesa3 = Contador.m3++; 
+    this.idRest = id;
+  }
+  get contadorMesas(){
+    if(this.idRest == 2013)
+    {
+      return this._mesaRest1;
+    }
+    if(this.idRest == 1043)
+    {
+      return this._mesa2;
+    }
+    else{
+      return this._mesa3;
+    }
 
+  }
+}
 module.exports.create = async (request, response, next) => {
   let mesa = request.body;
+  let restauranteMesa = mesa.restauranteId;
+  let codigo = "";
+  let contador = new Contador(restauranteMesa);
+  console.log(contador);
+  if (restauranteMesa == 2043) {
+    codigo = "FB1-"+ contador.contadorMesas;
+  }
+  if(restauranteMesa == 1043){
+    codigo = "FB2-"+ contador.contadorMesas;
+  }
+  if(restauranteMesa == 4043 ){
+    codigo = "FB3-"+contador.contadorMesas;
+  }
   const newMesa = await prisma.mesa.create({
     data: {
-      codigoMesa: mesa.codigoMesa,
+      codigoMesa:codigo,
       capacidad: parseInt(mesa.capacidad),
       estadoMesa: mesa.estadoMesa,
 
