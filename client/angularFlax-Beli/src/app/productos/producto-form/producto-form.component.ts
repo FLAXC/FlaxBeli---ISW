@@ -69,6 +69,7 @@ export class ProductoFormComponent implements OnInit {
       });
      
     }
+    
     listaRestaurantes() {
       this.productosList = null;
       this.gService

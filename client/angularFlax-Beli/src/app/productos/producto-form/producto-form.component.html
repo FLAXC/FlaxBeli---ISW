@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #codigoMesa maxlength="20" placeholder="Nombre" formControlName="nombre">
+            <input matInput #codigoMesa maxlength="20" placeholder="Nombre" formControlName="nombre" type="text">
             <mat-error *ngIf="productoForm.controls['nombre'].hasError('required')">
               Nombre del producto <strong>requerido</strong>
             </mat-error>
@@ -19,7 +19,7 @@
       <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput #codigoMesa maxlength="20" placeholder="Descripción" formControlName="descripcion">
+              <input matInput #codigoMesa maxlength="20" placeholder="Descripción" formControlName="descripcion"  type="text">
               <mat-error *ngIf="productoForm.controls['descripcion'].hasError('required')">
                 Descripción es <strong>requerido</strong>
               </mat-error>
@@ -29,7 +29,7 @@
        <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #codigoMesa maxlength="20" placeholder="Ingredientes" formControlName="ingredientes">
+            <input matInput #codigoMesa maxlength="200" placeholder="Ingredientes" formControlName="ingredientes"  type="text">
             <mat-error *ngIf="productoForm.controls['ingredientes'].hasError('required')">
               Ingredientes es <strong>requerido</strong>
             </mat-error>
@@ -39,7 +39,7 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput #codigoMesa maxlength="20" placeholder="Precio" formControlName="precio">
+              <input matInput #codigoMesa maxlength="20" placeholder="Precio" formControlName="precio" type="number">
               <mat-error *ngIf="productoForm.controls['precio'].hasError('required')">
                 Precio es <strong>requerido</strong>
               </mat-error>
@@ -50,7 +50,7 @@
             <div class="col">
               <mat-label>Estado</mat-label><br>
               <mat-radio-group formControlName="estado">
-                <mat-radio-button value="Habilitado">A la venta</mat-radio-button><br>
+                <mat-radio-button value="Habilitado">A la venta</mat-radio-button>
                 <mat-radio-button value="Inhabilitado">Agotado</mat-radio-button>
               </mat-radio-group>
               <mat-error *ngIf="productoForm.controls['estado'].touched &&
@@ -64,9 +64,9 @@
             <div class="col">
               <mat-label>Categoria</mat-label><br>
               <mat-radio-group formControlName="categoria">
-                <mat-radio-button value="Desayunos">Desayunos</mat-radio-button> <br>
-                <mat-radio-button value="Almuerzos">Almmuerzos</mat-radio-button><br>
-                <mat-radio-button value="ComidasRapidas">Comidas Rápidas</mat-radio-button><br>
+                <mat-radio-button value="Desayunos">Desayunos</mat-radio-button> 
+                <mat-radio-button value="Almuerzos">Almmuerzos</mat-radio-button>
+                <mat-radio-button value="ComidasRapidas">Comidas Rápidas</mat-radio-button>
               </mat-radio-group>
               <mat-error *ngIf="productoForm.controls['categoria'].touched &&
                productoForm.controls['categoria'].hasError('required')">

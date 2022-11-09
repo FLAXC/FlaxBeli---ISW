@@ -24,18 +24,20 @@ module.exports.getById = async (request, response, next) => {
   });
   response.json(mesa);
 };
-class Contador{
-  static mesa1 = 100;
-  static m2 = 100;
-  static m3 = 100;
+
+ class Contador{
+  static m1 = 100;
+  static me2 = 200;
+  static me3 = 300;
   constructor(id){
-    this._mesaRest1 = Contador.mesa1++;
-    this._mesa2 = Contador.m2++; 
-    this._mesa3 = Contador.m3++; 
+    this._mesaRest1 = Contador.m1++;
+    this._mesa2 = Contador.me2++; 
+    this._mesa3 = Contador.me3++; 
     this.idRest = id;
   }
-  get contadorMesas(){
-    if(this.idRest == 2013)
+
+    get  contadorMesas(){
+    if(this.idRest == 2043)
     {
       return this._mesaRest1;
     }
@@ -53,7 +55,7 @@ module.exports.create = async (request, response, next) => {
   let mesa = request.body;
   let restauranteMesa = mesa.restauranteId;
   let codigo = "";
-  let contador = new Contador(restauranteMesa);
+  let  contador = new Contador(restauranteMesa);
   console.log(contador);
   if (restauranteMesa == 2043) {
     codigo = "FB1-"+ contador.contadorMesas;
@@ -69,8 +71,7 @@ module.exports.create = async (request, response, next) => {
       codigoMesa:codigo,
       capacidad: parseInt(mesa.capacidad),
       estadoMesa: mesa.estadoMesa,
-
-      restauranteId:mesa.restauranteId,
+      restauranteId: mesa.restauranteId,
     },
   });
   response.json(newMesa);
@@ -91,8 +92,7 @@ module.exports.update = async (request, response, next) => {
       codigoMesa: mesa.codigoMesa,
       capacidad: parseInt(mesa.capacidad),
       estodoMesa: mesa.estodoMesa,
-
-      restauranteId: mesa.restauranteId
+      restauranteId: mesa.restauranteId,
     },
   });
   response.json(newMesa);
