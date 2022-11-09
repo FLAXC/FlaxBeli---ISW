@@ -1,0 +1,97 @@
+<form [formGroup]="productoForm" novalidate (ngSubmit)="isCreate ? crearProducto(): actualizarProducto()">
+  <input type="hidden" formControlName="id" />
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>{{titleForm}}Producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #codigoMesa maxlength="20" placeholder="Nombre" formControlName="nombre">
+            <mat-error *ngIf="productoForm.controls['nombre'].hasError('required')">
+              Nombre del producto <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput #codigoMesa maxlength="20" placeholder="Descripción" formControlName="descripcion">
+              <mat-error *ngIf="productoForm.controls['descripcion'].hasError('required')">
+                Descripción es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+       </div>
+       <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #codigoMesa maxlength="20" placeholder="Ingredientes" formControlName="ingredientes">
+            <mat-error *ngIf="productoForm.controls['ingredientes'].hasError('required')">
+              Ingredientes es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput #codigoMesa maxlength="20" placeholder="Precio" formControlName="precio">
+              <mat-error *ngIf="productoForm.controls['precio'].hasError('required')">
+                Precio es <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-label>Estado</mat-label><br>
+              <mat-radio-group formControlName="estado">
+                <mat-radio-button value="Habilitado">A la venta</mat-radio-button>
+                <mat-radio-button value="Inhabilitado">Agotado</mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="productoForm.controls['estado'].touched &&
+               productoForm.controls['estado'].hasError('required')">
+                Estado del producto es <strong>requerido</strong>
+              </mat-error>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-label>Categoria</mat-label><br>
+              <mat-radio-group formControlName="categoria">
+                <mat-radio-button value="Desayunos">Desayunos</mat-radio-button>
+                <mat-radio-button value="Almuerzos">Almmuerzos</mat-radio-button>
+                <mat-radio-button value="ComidasRapidas">Comidas Rápidas</mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="productoForm.controls['categoria'].touched &&
+               productoForm.controls['categoria'].hasError('required')">
+                Categoria del producto es <strong>requerido</strong>
+              </mat-error>
+            </div>
+          </div>
+
+        <div class="row">
+          <div class="col" *ngIf="productosList">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Restaurantes" formControlName="restaurantes" multiple>
+                <mat-option *ngFor="let g of productosList" [value]="g.id">
+                  {{ g.nombre }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="productoForm.controls['restaurantes'].hasError('required')">
+                Restaurantes son <strong>requeridos</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+  

@@ -24,7 +24,6 @@ export class MesaFormComponent implements OnInit {
     private router: Router,private activeRouter: ActivatedRoute) {
       this.formularioReactive();
       this.listaRestaurantes();
-    
   }
 
   ngOnInit(): void {
@@ -59,7 +58,7 @@ export class MesaFormComponent implements OnInit {
         codigoMesa:[null, Validators.required],
         capacidad:[null, Validators.required],
         estadoMesa: [null, Validators.required],
-        restaurante:[null, Validators.required]
+        restauranteId:[null, Validators.required]
       });
      
     }

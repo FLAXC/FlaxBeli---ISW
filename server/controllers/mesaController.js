@@ -32,7 +32,7 @@ module.exports.create = async (request, response, next) => {
       codigoMesa: mesa.codigoMesa,
       capacidad: parseInt(mesa.capacidad),
       estadoMesa: mesa.estadoMesa,
-      restauranteId:mesa.restaurante,
+      restauranteId: mesa.restauranteId,
     },
   });
   response.json(newMesa);
@@ -43,13 +43,6 @@ module.exports.update = async (request, response, next) => {
   let idMesa = parseInt(request.params.id);
   const mesaVieja = await prisma.mesa.findUnique({
     where: { id: idMesa },
-    include: {
-      restaurante: {
-        select:{
-          id:true
-        }
-      }
-    }
   });
 
   const newMesa = await prisma.mesa.update({
@@ -58,12 +51,9 @@ module.exports.update = async (request, response, next) => {
     },
     data: {
       codigoMesa: mesa.codigoMesa,
-      capacidad: mesa.capacidad,
+      capacidad: parseInt(mesa.capacidad),
       estodoMesa: mesa.estodoMesa,
-      restauranteId: {
-        disconnect: mesaVieja.restaurante,    
-        connect: mesa.restaurante,
-      },
+      restauranteId: mesa.restauranteId,
     },
   });
   response.json(newMesa);
