@@ -1,13 +1,22 @@
 .full-width-table {
-    width: 100%;
-    color: yellow;
+  width: 100%;
+  color: yellow;
+  background-color: black;
+}
+
+th{
+  color: white;
+}
+td{
+  color: yellow;
+}
+
+.mat-paginator{
+  background-color:yellow;
+  color: black
+  }
+  
+  
+  body {
     background-color: black;
   }
-  
-  th{
-    color: white;
-  }
-  td{
-    color: yellow;
-  }
-  

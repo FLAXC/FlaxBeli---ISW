@@ -5,11 +5,11 @@
       <mat-card-header>
         <mat-card-title>{{titleForm}} Mesa</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content> <br>
         <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
-                <input  matInput type="number" id="capacidad" min="1" max="6" class="form-control mb-2" > 
+                <input  matInput type="number" formControlName="capacidad" min="1" max="6" class="form-control mb-2" placeholder="Capacidad"> 
                 <mat-error *ngIf="mesaForm.controls['capacidad'].hasError('required')">
                   Capacidad es <strong>requerido</strong>
                 </mat-error>
@@ -38,7 +38,7 @@
               <mat-radio-group formControlName="estadoMesa">
                 <mat-radio-button value="Desocupada">Desocupada</mat-radio-button>
                 <mat-radio-button value="Reservada">Reservada</mat-radio-button>
-                <mat-radio-button value="Ocupada">Ocupada</mat-radio-button><br>
+                <mat-radio-button value="Ocupada">Ocupada</mat-radio-button>
                 <mat-radio-button value="ComandaRegistrada">Comanda Registrada</mat-radio-button>
                 <mat-radio-button value="PorPagar">Por Pagar</mat-radio-button>
                 <mat-radio-button value="Inactiva">Inactiva</mat-radio-button>
