@@ -1,5 +1,6 @@
 <div class="mat-elevation-z8" *ngIf="dataSource">
-  <mat-card-title>
+<div style="background-color:black ;">
+  <mat-card-title style="color: white;">
     Crear Mesa
     <a
       mat-fab
@@ -11,6 +12,7 @@
       <mat-icon>add</mat-icon>
     </a>
   </mat-card-title>
+</div>
     <table mat-table [dataSource]="dataSource" class="full-width-table" 
     matSort 
     matSortStart="desc"
@@ -63,7 +65,7 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   
