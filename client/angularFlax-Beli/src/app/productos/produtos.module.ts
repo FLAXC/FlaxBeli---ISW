@@ -16,9 +16,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ProductoFormComponent } from './producto-form/producto-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ProductosAllComponent, ProductosDetailComponent],
+  declarations: [ProductosAllComponent, ProductosDetailComponent, ProductoFormComponent],
   imports: [
     CommonModule,
     ProdutosRoutingModule,
@@ -33,6 +38,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSortModule,
     MatDividerModule,
     MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule
   ]
 })
 export class ProdutosModule { }

@@ -9,10 +9,10 @@ import { GenericService } from 'src/app/share/generic.service';
   templateUrl: './producto-form.component.html',
   styleUrls: ['./producto-form.component.css']
 })
-export class productoFormComponent implements OnInit {
+export class ProductoFormComponent implements OnInit {
   titleForm:string='Crear';
   destroy$: Subject<boolean> = new Subject<boolean>();
-  restaurantesList:any;
+  productosList:any;
   productoInfo:any;
   respProducto:any;
   submitted = false;
@@ -46,7 +46,7 @@ export class productoFormComponent implements OnInit {
                 precio:this.productoInfo.precio,
                 estado:this.productoInfo.estado,
                 categoria:this.productoInfo.categoria,
-                restauranteId:this.productoInfo.restauranteId,
+                restaurante:this.productoInfo.restaurantes.map(({id}) => id)
               })
              });
           }
@@ -65,18 +65,18 @@ export class productoFormComponent implements OnInit {
         precio: [null, Validators.required],
         estado: [null, Validators.required],
         categoria: [null, Validators.required],
-        restaurante:[null, Validators.required]
+        restaurantes:[null, Validators.required]
       });
      
     }
     listaRestaurantes() {
-      this.restaurantesList = null;
+      this.productosList = null;
       this.gService
         .list('restaurante')
         .pipe(takeUntil(this.destroy$))
         .subscribe((data: any) => {
           // console.log(data);
-          this.restaurantesList = data;
+          this.productosList = data;
         });
     }
 
@@ -91,7 +91,8 @@ export class productoFormComponent implements OnInit {
     if(this.productoForm.invalid){
       return;
     }
-    
+    let gFormat:any=this.productoForm.get('restaurantes')?.value.map(x=>({['id']: x }));
+    this.productoForm.patchValue({ restaurantes:gFormat});
     console.log(this.productoForm.value);
     //Accion API create enviando toda la informacion del formulario
     this.gService.create('producto',this.productoForm.value)
@@ -102,13 +103,15 @@ export class productoFormComponent implements OnInit {
         queryParams: {create:'true'}
       });
     });
-  
   }
+
   actualizarProducto(){
     this.submitted=true;
     if(this.productoForm.invalid){
       return;
     }
+    let gFormat:any=this.productoForm.get('restaurantes')?.value.map(x=>({['id']: x }));
+    this.productoForm.patchValue({ restaurantes:gFormat});
     console.log(this.productoForm.value);
     this.gService.update('producto',this.productoForm.value)
     .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
@@ -129,5 +132,4 @@ export class productoFormComponent implements OnInit {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
-
 }

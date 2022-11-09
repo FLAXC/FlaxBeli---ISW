@@ -31,7 +31,7 @@ export class GenericService {
   }
   // actualizar
   update(endopoint: string, objUpdate: any | any): Observable<any | any[]> {
-    return this.http.patch<any | any[]>(
+    return this.http.put<any | any[]>(
       this.urlAPI + endopoint + `/${objUpdate.id}`,
       objUpdate
     );
