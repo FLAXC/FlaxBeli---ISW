@@ -16,6 +16,14 @@
     color: black
     }
     
+    .colorBotones{
+      background-color: yellow;
+      color: black;
+    }
+    .colorBotonesEdi{
+      background-color: white;
+      color: black;
+    }
     
     body {
       background-color: black;

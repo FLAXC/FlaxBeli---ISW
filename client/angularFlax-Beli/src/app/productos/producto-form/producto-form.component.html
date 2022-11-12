@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput #codigoMesa maxlength="20" placeholder="Nombre" formControlName="nombre" type="text">
+            <input matInput #codigoMesa maxlength="200" placeholder="Nombre" formControlName="nombre" type="text">
             <mat-error *ngIf="productoForm.controls['nombre'].hasError('required')">
               Nombre del producto <strong>requerido</strong>
             </mat-error>
@@ -19,7 +19,7 @@
       <div class="row">
           <div class="col">
             <mat-form-field class="full-width">
-              <input matInput #codigoMesa maxlength="20" placeholder="Descripción" formControlName="descripcion"  type="text">
+              <input matInput #codigoMesa maxlength="200" placeholder="Descripción" formControlName="descripcion"  type="text">
               <mat-error *ngIf="productoForm.controls['descripcion'].hasError('required')">
                 Descripción es <strong>requerido</strong>
               </mat-error>
