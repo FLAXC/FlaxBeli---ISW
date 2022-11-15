@@ -3,21 +3,21 @@
   </button>
   <div *ngIf="datos" class="template">
   <mat-dialog-content>
-    <h4>Pedido Restaurante FlaxBeli</h4>
-    <p>Notas: {{datos.notas}}</p>
-    <p>Subtotal: {{datos.subtotal}}</p>
-    <h4>Datos del usuario:</h4>
-    <ul *ngIf="datos.usuario">
-      <h4 >Usuario: {{datos.usuario.nombre}}</h4>
-    </ul>
-    <h4>Datos de los productos:</h4>
-      <ul *ngIf="datos.productos">
-        <h4 *ngFor="let item of datos.productos">Producto: {{item.producto.nombre}}</h4>
-     </ul>
-     <h4>Datos Mesa:</h4>
-     <ul *ngIf="datos.mesa">
-       <h4 >Código Mesa: {{datos.mesa.codigoMesa}}</h4>
-     </ul>
+    <h4><strong>Detalle de la Orden</strong> </h4>
+    <p><strong>Fecha:</strong> {{datos.fechaOrden | date: 'dd/MM/yyyy'}}</p>
+    <p><strong>--------------------------------------------------------------</strong></p>
+    <p *ngIf="datos.usuario"><strong>Cliente:</strong> {{datos.usuario.nombre}}</p>
+    <p *ngIf="datos.mesa"><strong>Mesa:</strong> {{datos.mesa.codigoMesa}}</p>
+    <p><strong>--------------------------------------------------------------</strong></p>
+    <ol *ngIf="datos.productos">
+    <li *ngFor="let item of datos.productos">{{item.producto.nombre}}</li>
+    </ol>
+    <p><strong>--------------------------------------------------------------</strong></p>
+    <p><strong>Notas:</strong> {{datos.notas}}</p>
+    <p><strong>Subtotal:</strong> {{datos.subtotal}}</p>
+
+    
+     
   </mat-dialog-content>
   
   <mat-dialog-actions>

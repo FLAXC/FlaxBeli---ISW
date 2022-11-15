@@ -120,7 +120,7 @@ enum EstadoComanda {
 enum Categoria {
   Desayunos
   Almuerzos
-  ComidasRapidas
+  ComidasRapidas 
 }
 
 enum TipoPago {

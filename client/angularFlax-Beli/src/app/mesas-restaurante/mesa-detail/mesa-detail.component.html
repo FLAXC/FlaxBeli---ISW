@@ -3,10 +3,13 @@
   </button>
 <div *ngIf="datos" class="template">
 <mat-dialog-content >
-  <p>Identificador: {{datos.id}}</p>
- <p>Capacidad: {{datos.capacidad}}</p>
- <h4>Código Restaurante: {{datos.restauranteId}}</h4>
- <h4 *ngIf="datos.restaurante">Nombre Restaurante: {{datos.restaurante.nombre}}</h4>
+ <h4><strong>Detalle de la mesa</strong> </h4>
+ <p><strong>Identificador:</strong> {{datos.id}}</p>
+ <p><strong>Código:</strong> {{datos.codigoMesa}}</p>
+ <p><strong>Estado:</strong> {{datos.estadoMesa}}</p>
+ <p><strong>Capacidad:</strong> {{datos.capacidad}}</p>
+ <h4><strong>Código del Restaurante:</strong> {{datos.restauranteId}}</h4>
+ <h4 *ngIf="datos.restaurante"><strong>Nombre del Restaurante:</strong> {{datos.restaurante.nombre}}</h4>
 
 </mat-dialog-content>
 
