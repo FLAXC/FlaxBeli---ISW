@@ -3,7 +3,7 @@
 <div style="background-color:black ;">
   <mat-card-title style="color: white;">
     Crear Mesa
-    <a
+    <a class="colorBotones"
       mat-fab
       matTooltip="Crear Mesa"
       aria-label="Crear Mesa"
@@ -38,7 +38,7 @@
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef>Detalle</th>
         <td mat-cell *matCellDef="let row">
-          <button
+          <button  class="colorBotonesEdi"
             mat-mini-fab
             matTooltip="Detalle Mesa"
             aria-label="Detalle Mesa"
@@ -54,7 +54,7 @@
       <ng-container matColumnDef="acciones2">
         <th mat-header-cell *matHeaderCellDef>Actualizar Mesa</th>
         <td mat-cell *matCellDef="let row">
-          <button
+          <button class="colorBotonesEdi"
           mat-mini-fab
           matTooltip="Actualizar Mesa"
           aria-label="Actualizar Mesa"
@@ -73,8 +73,8 @@
     <mat-paginator #paginator
         [length]="dataSource?.data?.length"
         [pageIndex]="0"
-        [pageSize]="8"
-        [pageSizeOptions]="[5, 10]"
+        [pageSize]="12"
+        [pageSizeOptions]="[5, 10, 12]"
         aria-label="Seleccione una página">
     </mat-paginator>
   </div>
