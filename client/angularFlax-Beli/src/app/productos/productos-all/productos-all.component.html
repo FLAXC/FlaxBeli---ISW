@@ -1,6 +1,6 @@
 <body>
 <div class="mat-elevation-z8" *ngIf="dataSource">
-  <mat-card-title style="color: white;">
+  <mat-card-title >
     Crear Producto
     <a class="colorBotones"
       mat-fab
@@ -39,7 +39,7 @@
       </ng-container>
 
       <ng-container matColumnDef="categoria">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoria</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoría</th>
         <td mat-cell *matCellDef="let row">{{row.categoria}}</td>
       </ng-container>
    
