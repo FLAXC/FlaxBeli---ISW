@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PedidosRoutingModule } from './pedidos-routing.module';
 import { PedidosAllComponent } from './pedidos-all/pedidos-all.component';
 import { PedidosDetailComponent } from './pedidos-detail/pedidos-detail.component';
+import { PedidosOrdenComponent } from './pedidos-orden/pedidos-orden.component';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -17,8 +18,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
+
 @NgModule({
-  declarations: [PedidosAllComponent, PedidosDetailComponent],
+  declarations: [PedidosAllComponent, PedidosDetailComponent, PedidosOrdenComponent],
   imports: [
     CommonModule,
     PedidosRoutingModule,
