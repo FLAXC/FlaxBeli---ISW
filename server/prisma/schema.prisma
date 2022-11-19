@@ -57,7 +57,7 @@ model PedidoOnProduto {
   producto   Producto @relation(fields: [productoId], references: [id])
   productoId Int
   cantidad   Int
-
+  
   @@id([pedidoId, productoId])
 }
 

@@ -1,56 +1,131 @@
+<mat-toolbar color="primary" class="toolbar">
+  <div class="example-spacer">
+    <p class="titulo">FlaxBeli</p>
+  </div>
 
-    <mat-toolbar color="primary" class="toolbar">
-      <div class="example-spacer" >
-        <p class="titulo"> FlaxBeli</p>
-    </div>
+  <button
+    class="buttonMenu"
+    mat-button
+    [routerLink]="['/home']"
+    routerLinkActive="is-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+  >
+    Inicio
+  </button>
 
-    <button class="buttonMenu" mat-button [routerLink]="['/home']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Inicio</button>
-   
+  <button class="buttonMenu" mat-button [matMenuTriggerFor]="aboveMenu">
+    Mesas
+  </button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above" overlapTrigger="false">
+    <button
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['/mesas-restaurante']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Mesas por Restaurante
+    </button>
+    <button
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['/mesas/all']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Mantenimiento
+    </button>
+  </mat-menu>
 
-    <button class="buttonMenu" mat-button [matMenuTriggerFor]="aboveMenu">Mesas</button>
-    <mat-menu #aboveMenu="matMenu" yPosition="above" overlapTrigger="false">
-      <button  class="buttonMenu" mat-menu-item [routerLink]="['/mesas-restaurante']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Mesas por Restaurante</button>
-      <button  class="buttonMenu" mat-menu-item [routerLink]="['/mesas/all']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Mantenimiento</button>
+  <button class="buttonMenu" mat-button [matMenuTriggerFor]="productos">
+    Productos
+  </button>
+  <mat-menu #productos="matMenu" yPosition="above" overlapTrigger="false">
+    <button
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['/productos/all']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Mantenimiento
+    </button>
+  </mat-menu>
+
+  <button class="buttonMenu" mat-button [matMenuTriggerFor]="pedido">
+    Pedidos
+  </button>
+  <mat-menu #pedido="matMenu" yPosition="above" overlapTrigger="false">
+    <button
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['/pedidos/all']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Listado de pedidos
+    </button>
+    <button
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['/pedidos/orden']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Ordenar
+    </button>
+
+    
+  </mat-menu>
+
+  <button class="buttonMenu" mat-button>Restaurante</button>
+
+  <button
+    class="buttonMenu"
+    mat-button
+    mat-button
+    [routerLink]="['/core/acerca-de']"
+    routerLinkActive="is-active"
+    [routerLinkActiveOptions]="{ exact: false }"
+  >
+    Acerca de
+  </button>
+
+  <span class="example-spacer"></span>
+  <div class="example-spacer">
+    <!-- Enlaces de la aplicación -->
+    <!-- https://fonts.google.com/icons -->
+    <!--https://material.angular.io/guide/typography-->
+
+    <button
+    mat-icon-button matBadgeColor="accent"
+    [routerLink]="'/pedidos/all'"
+    aria-label="Cantidad"
+    >
+      
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+
+    <!-- [matBadge]="qtyItems.toString()"
+    [routerLinkActive]="'mat-raised-button'" -->
+
+    <span class="mat-caption" *ngIf="isAutenticated"
+      >{{ currentUser.email }}
+    </span>
+    <button mat-icon-button [matMenuTriggerFor]="menu2">
+      <mat-icon [ngStyle]="{ color: isAutenticated ? 'white' : '#9E9E9E' }"
+        >person</mat-icon
+      >
+    </button>
+    <mat-menu #menu2="matMenu">
+      <a mat-menu-item *ngIf="!isAutenticated">
+        <mat-icon>person_add</mat-icon>
+        <span> Login </span>
+      </a>
+      <a mat-menu-item *ngIf="isAutenticated">
+        <mat-icon>person_remove</mat-icon>
+        <span> Logout </span>
+      </a>
     </mat-menu>
-    
-
-    <button class="buttonMenu" mat-button [matMenuTriggerFor]="productos">Productos</button>
-    <mat-menu #productos="matMenu" yPosition="above" overlapTrigger="false">
-      <button  class="buttonMenu" mat-menu-item [routerLink]="['/productos/all']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Mantenimiento</button>
-    </mat-menu>
-
-
-    <button class="buttonMenu" mat-button [matMenuTriggerFor]="pedido">Pedidos</button>
-    <mat-menu #pedido="matMenu" yPosition="above" overlapTrigger="false">
-      <button  class="buttonMenu" mat-menu-item [routerLink]="['/pedidos/all']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }">Listado de pedidos</button>
-    </mat-menu>
-    
-    
-    <button class="buttonMenu" mat-button >Restaurante</button>
-
-    
-    <button class="buttonMenu" mat-button mat-button [routerLink]="['/core/acerca-de']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: false }" >Acerca de</button>
-    
-      <span class="example-spacer"></span>
-      <div class="example-spacer" >
-        <!-- Enlaces de la aplicación -->
-         <!-- https://fonts.google.com/icons -->
-         <!--https://material.angular.io/guide/typography-->
-     
-        <span class="mat-caption" *ngIf="isAutenticated">{{currentUser.email}} </span> 
-      <button mat-icon-button [matMenuTriggerFor]="menu2">
-       
-        <mat-icon [ngStyle]="{'color': isAutenticated ? 'white': '#9E9E9E'}" >person</mat-icon>
-      </button>
-      <mat-menu #menu2="matMenu">
-        <a mat-menu-item *ngIf="!(isAutenticated)">
-          <mat-icon>person_add</mat-icon>
-          <span> Login </span> 
-        </a>
-        <a mat-menu-item *ngIf="isAutenticated">
-          <mat-icon>person_remove</mat-icon>
-          <span> Logout </span>
-        </a>
-      </mat-menu>
-    </div>
-    </mat-toolbar>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `pedidoonproduto` ADD COLUMN `fechaPedido` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3);
