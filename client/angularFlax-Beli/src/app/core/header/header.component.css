@@ -19,3 +19,9 @@
     font:oblique bold 120% cursive ;
     margin: 1%;
  }
+
+
+ [mat-menu-item].is-active,
+ [mat-list-item].is-active {
+   background: hsla(0, 0%, 34%, 0.1) !important;
+ }
