@@ -1,7 +1,7 @@
 <body>
 <div class="mat-elevation-z8" *ngIf="dataSource">
 <div style="background-color:black ;">
-  <mat-card-title style="color: white;">
+  <mat-card-title >
     Crear Mesa
     <a class="colorBotones"
       mat-fab
@@ -31,7 +31,7 @@
       </ng-container>
   
       <ng-container matColumnDef="estadoMesa">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Capacidad</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
         <td mat-cell *matCellDef="let row">{{row.estadoMesa}}</td>
       </ng-container>
    

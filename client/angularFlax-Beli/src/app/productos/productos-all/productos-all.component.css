@@ -28,4 +28,9 @@
     body {
       background-color: black;
     }
+
+    mat-card-title{
+      margin-left: 25px;
+      color: white
+    }
     

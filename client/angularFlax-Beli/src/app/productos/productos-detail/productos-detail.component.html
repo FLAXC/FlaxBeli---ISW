@@ -3,12 +3,17 @@
 </button>
 <div *ngIf="datos" class="template">
 <mat-dialog-content >
-  <p>Identificador: {{datos.id}}</p>
-  <p>Descripción: {{datos.descripcion}}</p>
-  <h4>Ingredientes: {{datos.ingredientes}}</h4>
-  <h4>Disponible en los restaurantes:</h4>
+  <h4><strong>Detalle del producto</strong> </h4>
+  <p><strong>Identificador:</strong> {{datos.id}}</p>
+  <p><strong>Nombre</strong> {{datos.nombre}}</p>
+  <p><strong>Descripción:</strong> {{datos.descripcion}}</p>
+  <p><strong>Ingredientes:</strong> {{datos.ingredientes}}</p>
+  <p><strong>Categoría:</strong> {{datos.categoria}}</p>
+  <p><strong>Estado:</strong> {{datos.estado}}</p>
+  <p><strong>Precio:</strong> {{datos.precio}}</p>
+  <h4><strong>Disponible en los restaurantes:</strong></h4>
   <ul *ngIf="datos.restaurantes">
-    <h4 *ngFor="let item of datos.restaurantes">{{item.nombre}} - {{item.ubicacion}}</h4>  
+    <li *ngFor="let item of datos.restaurantes">{{item.nombre}} - {{item.ubicacion}}</li>  
  </ul>
 </mat-dialog-content>
 
