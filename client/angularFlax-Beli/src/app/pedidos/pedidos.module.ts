@@ -17,6 +17,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -36,6 +38,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSortModule,
     MatDividerModule,
     MatDialogModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
+
   ]
 })
 export class PedidosModule { }

@@ -12,6 +12,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';	
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AcercaDeComponent } from './acerca-de/acerca-de.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, PageNotFoundComponent, AcercaDeComponent],
@@ -19,6 +20,7 @@ import { AcercaDeComponent } from './acerca-de/acerca-de.component';
     CommonModule,
     RouterModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
