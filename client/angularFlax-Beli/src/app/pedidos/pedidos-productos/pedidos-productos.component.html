@@ -1,0 +1,44 @@
+<body>
+<div class="grid-container">
+    <h1 class="mat-h1" style="color: yellow"><strong>Productos disponibles</strong> </h1>
+    <mat-grid-list [cols]="3" rowHeight="12em" gutterSize="10px" *ngIf="datos">
+      <mat-grid-tile *ngFor="let item of datos" >
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              <strong>{{item.nombre }}</strong>
+             
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div style="margin-bottom: 1000;"> {{
+              item.precio | currency: "₡" 
+            }}</div>
+          </mat-card-content>
+          <mat-divider inset></mat-divider>
+          <mat-card-actions>
+            <button
+            mat-mini-fab color="accent"
+            matTooltip="Detalle Producto"
+            aria-label="Detalle Producto"
+            color="primary"
+            (click)="detalleProducto(item.id)"
+          >
+          <mat-icon class="mat-18">info</mat-icon>
+          </button>
+          <button
+            mat-mini-fab color="accent"
+            matTooltip="Comprar"
+            aria-label="Comprar"
+            color="primary"
+            (click)="comprar(item.id)"
+          >
+          
+          <mat-icon class="mat-18">add_shopping_cart</mat-icon>
+          </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</body>
