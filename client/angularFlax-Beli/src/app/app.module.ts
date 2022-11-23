@@ -12,7 +12,6 @@ import { UserModule } from './user/user.module';
 import { MesasRestauranteModule } from './mesas-restaurante/mesas-restaurante.module';
 import { ShareModule } from './share/share.module';
 import { ProdutosModule } from './productos/produtos.module';
-import { PedidosAllComponent } from './pedidos/pedidos-all/pedidos-all.component';
 import { PedidosModule } from './pedidos/pedidos.module';
 
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
@@ -36,7 +35,11 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     HomeModule, 
     UserModule,
     MesasRestauranteModule, 
-    AppRoutingModule, ProdutosModule, PedidosModule,
+    ProdutosModule,
+    PedidosModule,
+
+    //Siempre de ultimo
+    AppRoutingModule, 
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, 
     useClass: HttpErrorInterceptorService, multi: true }, ],

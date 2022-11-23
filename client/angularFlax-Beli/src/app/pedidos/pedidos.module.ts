@@ -5,6 +5,7 @@ import { PedidosRoutingModule } from './pedidos-routing.module';
 import { PedidosAllComponent } from './pedidos-all/pedidos-all.component';
 import { PedidosDetailComponent } from './pedidos-detail/pedidos-detail.component';
 import { PedidosOrdenComponent } from './pedidos-orden/pedidos-orden.component';
+import { PedidosProductosComponent } from './pedidos-productos/pedidos-productos.component';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -17,11 +18,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 
 @NgModule({
-  declarations: [PedidosAllComponent, PedidosDetailComponent, PedidosOrdenComponent],
+  declarations: [PedidosAllComponent, PedidosDetailComponent, PedidosOrdenComponent, PedidosProductosComponent,],
   imports: [
     CommonModule,
     PedidosRoutingModule,
@@ -36,6 +41,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSortModule,
     MatDividerModule,
     MatDialogModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
+
   ]
 })
 export class PedidosModule { }

@@ -1,0 +1,33 @@
+.grid-container {
+    margin: 20px;
+  }
+  
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    color: yellow;
+    background-image : url(https://media.istockphoto.com/photos/dark-table-setting-empty-black-ceramic-plate-knife-and-fork-on-stone-picture-id1223334575?k=20&m=1223334575&s=170667a&w=0&h=GdeBVDyn3Vo_IgtBi1gRRnb3OMHD2UtZL1YBMavk_7s=)
+  }
+  
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    
+  }
+  
+  .dashboard-card-content {
+    text-align: center;
+    top: -20;
+    font-size: 21px;
+    color: white;
+    
+  }
+
+  body {
+    background-color: black;
+  }
+  
