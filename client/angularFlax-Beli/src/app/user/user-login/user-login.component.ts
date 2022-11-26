@@ -11,7 +11,7 @@ import { NotificacionService, TipoMessage } from 'src/app/share/notification.ser
 })
 export class UserLoginComponent implements OnInit {
   hide=true;
-  formulario!: FormGroup;
+  formulario: FormGroup;
   makeSubmit: boolean = false;
   infoUsuario: any;
   constructor(
@@ -20,13 +20,10 @@ export class UserLoginComponent implements OnInit {
     private notificacion: NotificacionService,
     private router: Router,
     private route: ActivatedRoute
-  ) { 
-    this.reactiveForm();
-  }
-    // Definir el formulario con su reglas de validación
+  ) {this.reactiveForm();}
+
+
     reactiveForm() {
-      /*https://angular.io/guide/reactive-forms
-     https://angular.io/api/forms/Validators */
       this.formulario = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', Validators.required],
@@ -36,6 +33,7 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {
     this.mensajes();
   }
+
   mensajes() {
     let register = false;
     let auth='';
@@ -58,23 +56,22 @@ export class UserLoginComponent implements OnInit {
         );
       }
     });
-   
   }
   onReset() {
     this.formulario.reset();
   }
   submitForm() {
-   this.makeSubmit=true;
-   //Validación
-   if(this.formulario.invalid){
-    return;
+    this.makeSubmit=true;
+    //Validación
+    if(this.formulario.invalid){
+     return;
+    }
+    this.authService.loginUser(this.formulario.value)
+    .subscribe((respuesta:any)=>{
+     this.router.navigate(['/']);
+    })
    }
-   this.authService.loginUser(this.formulario.value)
-   .subscribe((respuesta:any)=>{
-    this.router.navigate(['/']);
-   })
-  }
-  public errorHandling = (control: string, error: string) => {
+   public errorHandling = (control: string, error: string) => {
     return (
       this.formulario.controls[control].hasError(error) &&
       this.formulario.controls[control].invalid &&

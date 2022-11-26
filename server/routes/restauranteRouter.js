@@ -10,4 +10,6 @@ router.get("/", restauranteController.get);
 
 router.get("/:id", restauranteController.getById);
 
+router.get("/restaurante/:id",restauranteController.getByIdRestaurante);
+
 module.exports = router;

@@ -52,6 +52,20 @@
               </mat-form-field>
           </div>
         </div>
+        <div class="row">
+            <div class="col" *ngIf="restaurantesList">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Restaurantes" formControlName="restauranteId" >
+                  <mat-option *ngFor="let g of restaurantesList" [value]="g.id">
+                    {{ g.nombre }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="errorHandling['restauranteId'],'required'">
+                  Restaurante es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary" (click)="submitForm()">Registrar</button>
@@ -59,4 +73,3 @@
       </mat-card-actions>
     </mat-card>
     </form>
-    

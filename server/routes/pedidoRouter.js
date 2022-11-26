@@ -7,6 +7,10 @@ const pedidoController=require("../controllers/pedidoController");
 
 router.get("/", pedidoController.get);
 
+router.post("/", pedidoController.create); 
+
 router.get("/:id",pedidoController.getById);
+
+
 
 module.exports=router;

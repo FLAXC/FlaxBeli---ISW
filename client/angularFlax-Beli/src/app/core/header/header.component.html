@@ -98,16 +98,13 @@
     <!--https://material.angular.io/guide/typography-->
 
     <button
-    mat-icon-button matBadgeColor="accent"
-    [routerLink]="'/pedidos/orden'"
+    mat-icon-button matBadgeColor="accent" [matBadge]="qtyItems.toString()" 
+    [routerLink]="'/pedidos/orden'" [routerLinkActive]="'mat-raised-button'"
     aria-label="Cantidad"
     >
       
       <mat-icon>shopping_cart</mat-icon>
     </button>
-
-    <!-- [matBadge]="qtyItems.toString()"
-    [routerLinkActive]="'mat-raised-button'" -->
 
     <span class="mat-caption" *ngIf="isAutenticated"
       >{{ currentUser.email }}

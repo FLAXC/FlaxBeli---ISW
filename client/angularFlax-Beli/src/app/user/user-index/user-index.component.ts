@@ -11,9 +11,7 @@ export class UserIndexComponent implements OnInit {
 
   constructor(
     private router: Router, 
-    private route: ActivatedRoute) {
-
-    }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.navigate(['/usuario/login'], { relativeTo: this.route });

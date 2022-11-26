@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserCreateComponent } from './user-create/user-create.component';
-import { UserLoginComponent } from './user-login/user-login.component';
 import { UserIndexComponent } from './user-index/user-index.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
@@ -16,9 +17,17 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
 import {MatCardModule} from '@angular/material/card'; 
+
+
 @NgModule({
-  declarations: [UserCreateComponent, UserLoginComponent, UserIndexComponent],
-  imports: [CommonModule,
+  declarations: [
+    UserCreateComponent,
+    UserIndexComponent,
+    UserLoginComponent
+  ],
+  imports: [
+    CommonModule,
+    UserRoutingModule,
     MatCardModule,
     MatTabsModule,
     MatButtonModule,MatIconModule,
@@ -28,6 +37,7 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule, UserRoutingModule],
+    ReactiveFormsModule,
+  ],
 })
-export class UserModule {}
+export class UserModule { }
