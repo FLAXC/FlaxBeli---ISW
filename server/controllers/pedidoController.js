@@ -37,16 +37,25 @@ module.exports.create = async (req, res, next) => {
    
   const newPedido = await prisma.pedido.create({
     data: {
-      fechaOrden: infoPedido.fechaPedido,
+      fechaOrden: new Date(Date.now()),
+      estado: infoPedido.estado,
       //Actualizar cuando este autenticacion
       usuario:{ 
         connect:{id:1}
       },
+      notas: infoPedido.notas,
+      subtotal: infoPedido.subtotal,
       productos: { 
         createMany: {
           //{ productoId:1, cantidad:1}
           data: infoPedido.productos,
         },
+      },
+      mesa:{
+        connect:{id:1}
+      },
+      factura:{
+        connect:{id:1}
       },
     },
   });

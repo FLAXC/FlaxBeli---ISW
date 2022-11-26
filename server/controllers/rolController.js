@@ -12,18 +12,21 @@ module.exports.get = async (request, response, next) => {
           ["nombre"]: "Administrador",
         });
         break;
-      case Role.Cliente:
+      case Role.Empleado:
         listRoles.unshift({
           ["id"]: element,
-          ["nombre"]: "Usuario",
+          ["nombre"]: "Empleado",
         });
         break;
-      default:
-        listRoles.unshift({ ["id"]: Role.Administrador, ["nombre"]: "Usuario" });
-        break;
+        case Role.Cliente:
+          listRoles.unshift({
+            ["id"]: element,
+            ["nombre"]: "Cliente",
+          });
+          break;
     }
   }
-
+  console.log(listRoles);
   response.json(listRoles);
 };
 module.exports.getById = async (request, response, next) => {
@@ -33,13 +36,14 @@ module.exports.getById = async (request, response, next) => {
     case Role.Administrador:
       nombre = "Administrador";
       break;
-    case Role.Cliente:
-      nombre = "Usuario";
+    case Role.Empleado:
+      nombre = "Empleado";
       break;
     default:
       nombre = "Usuario";
       break;
   }
   let rol = { ["id"]: Role[id], ["nombre"]: nombre };
+  console.log(rol);
   response.json(rol);
 };

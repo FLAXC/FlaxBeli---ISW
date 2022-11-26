@@ -1,14 +1,41 @@
 <body>
-  <div>
-    <!-- <h1 style="text-align:center;font:oblique bold 120% cursive; font-size: 30px; color: white;padding-left: 30%;" class="mat-h1">Estado de nuestras mesas</h1> -->
-    <mat-grid-list [cols]="3" rowHeight="12em" gutterSize="10px" *ngIf="datos">
-      <mat-grid-tile *ngFor="let item of datos" >
+  <h1>Restaurante Flax-Beli #1</h1>
+    <mat-grid-list  [cols]="3" rowHeight="12em" gutterSize="10px"  *ngIf="datos">
+      <ng-container class="container" *ngFor="let item of datos"> 
+      <mat-grid-tile *ngIf="item.restauranteId==2043">
         <mat-card class="dashboard-card">
-          <mat-card-header>
+          
+          <mat-card-header *ngIf="item.estadoMesa == 'Ocupada'" style="color:red;">
             <mat-card-title>
               #{{item.id}}       
             </mat-card-title>
           </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'Reservada'" style="color:blue;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'Inactiva'" style="color:white;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+          
+          <mat-card-header *ngIf="item.estadoMesa == 'Desocupada'" style="color:green;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'PorPagar'" style="color:gray;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-divider inset></mat-divider>
           <mat-card-content class="dashboard-card-content">
             <div>Código de mesa: {{
               item.codigoMesa 
@@ -17,11 +44,111 @@
               item.estadoMesa
             }}</div>
           </mat-card-content>
-          <mat-divider inset></mat-divider>
         </mat-card>
       </mat-grid-tile>
+    </ng-container>
     </mat-grid-list>
-  </div>
+
+    <h1>Restaurante Flax-Beli #2</h1>
+    <mat-grid-list  [cols]="3" rowHeight="12em" gutterSize="10px"  *ngIf="datos">
+      <ng-container class="container" *ngFor="let item of datos"> 
+      <mat-grid-tile *ngIf="item.restauranteId==1043">
+        <mat-card class="dashboard-card">
+
+          <mat-card-header *ngIf="item.estadoMesa == 'Ocupada'" style="color:red;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'Reservada'" style="color:blue;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'Inactiva'" style="color:white;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+          
+          <mat-card-header *ngIf="item.estadoMesa == 'Desocupada'" style="color:green;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'PorPagar'" style="color:gray;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <br>
+          <mat-divider inset></mat-divider>
+          <mat-card-content class="dashboard-card-content">
+            <div>Código de mesa: {{
+              item.codigoMesa 
+            }}</div>
+            <div>Estado actual: {{
+              item.estadoMesa
+            }}</div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+    </mat-grid-list>
+
+<h1>Restaurante Flax-Beli #3</h1>
+    <mat-grid-list  [cols]="3" rowHeight="12em" gutterSize="10px"  *ngIf="datos">
+      <ng-container class="container" *ngFor="let item of datos"> 
+      <mat-grid-tile *ngIf="item.restauranteId==4043">
+        <mat-card class="dashboard-card">
+          <mat-card-header *ngIf="item.estadoMesa == 'Ocupada'" style="color:red;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'Reservada'" style="color:blue;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'Inactiva'" style="color:white;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+          
+          <mat-card-header *ngIf="item.estadoMesa == 'Desocupada'" style="color:green;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-header *ngIf="item.estadoMesa == 'PorPagar'" style="color:gray;">
+            <mat-card-title>
+              #{{item.id}}       
+            </mat-card-title>
+          </mat-card-header>
+          <mat-divider inset></mat-divider>
+          <mat-card-content class="dashboard-card-content">
+            <div>Código de mesa: {{
+              item.codigoMesa 
+            }}</div>
+            <div>Estado actual: {{
+              item.estadoMesa
+            }}</div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+    </mat-grid-list>
 </body>
+
+
 
 

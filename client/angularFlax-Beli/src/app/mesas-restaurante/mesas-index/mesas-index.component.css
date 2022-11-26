@@ -1,11 +1,29 @@
 body {
-  height: 100%;
+  height: auto;
   background-image:  url("https://us.123rf.com/450wm/merfin/merfin1812/merfin181200046/127109225-dibujado-a-mano-conjunto-de-garabatos-de-comida-r%C3%A1pida-icono-y-elementos.jpg?ver=6");
   background-repeat: repeat;
   background-attachment: fixed;
   scroll-snap-type: none;
 }
+h1{
+  padding:5px;
+  font-style:italic;
+  font-weight:bold;
+  text-decoration:underline;
+  color: white;
+  text-align: center;
+  }
 
+.azul {
+    color:blue;
+    }
+
+.verde {
+    color:green;
+    }
+.rojo{
+  color: red;
+}
 .grid-container {
     margin: 20px;
   }
@@ -19,6 +37,7 @@ body {
     color: yellow;
     background-image: url(https://static4.depositphotos.com/1010889/274/v/450/depositphotos_2743618-stock-illustration-vector-realistic-wood-texture-background.jpg);
     background-repeat: no-repeat;
+
   }
   
   .more-button {
@@ -26,7 +45,7 @@ body {
     top: 5px;
     right: 10px;
   }
-  
+
   .dashboard-card-content {
     text-align: center;
   }

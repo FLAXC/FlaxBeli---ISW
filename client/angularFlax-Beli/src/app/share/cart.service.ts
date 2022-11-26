@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 // Definir clase con las propiedades que es necesario que gestione el carrito
 export class ItemCart {
-  idItem: number | undefined;
+  idItem: number;
   product: any;
   cantidad: number;
-  precio: number | undefined;
-  subtotal: number | undefined;
+  precio: number;
+  subtotal: number;
 }
 @Injectable({
   providedIn: 'root',
@@ -121,6 +121,7 @@ export class CartService {
      });
       
     }
+    console.log(sum);
     return sum;
   }
   //Calcula y retorna el total de los items del carrito

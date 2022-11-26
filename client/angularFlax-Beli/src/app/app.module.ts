@@ -12,8 +12,10 @@ import { MesasRestauranteModule } from './mesas-restaurante/mesas-restaurante.mo
 import { ShareModule } from './share/share.module';
 import { ProdutosModule } from './productos/produtos.module';
 import { PedidosModule } from './pedidos/pedidos.module';
+import { UserModule } from './user/user.module';
 
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
+
 
 
 @NgModule({
@@ -29,11 +31,11 @@ import { HttpErrorInterceptorService } from './share/http-error-interceptor.serv
     MesasRestauranteModule, 
     ProdutosModule,
     PedidosModule,
-
+    UserModule, 
     //Siempre de ultimo
-    AppRoutingModule, 
+    AppRoutingModule,
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, 
+  providers: [{ provide: HTTP_INTERCEPTORS, 
     useClass: HttpErrorInterceptorService, multi: true }, ],
   bootstrap: [AppComponent],
 })
