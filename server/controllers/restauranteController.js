@@ -19,3 +19,15 @@ module.exports.getById = async (request, response, next) => {
   });
   response.json(restaurante);
 };
+
+module.exports.getByIdRestaurante = async (request, response, next) => {
+
+  let id=parseInt(request.params.id);
+  const restaurante=await prisma.restaurante.findUnique({
+      where:{ id:id},
+       include: {
+          productos: true,    
+       }
+  });
+  response.json(restaurante);
+};

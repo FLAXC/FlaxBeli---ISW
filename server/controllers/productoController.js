@@ -24,6 +24,19 @@ module.exports.getById = async (request, response, next) => {
   response.json(producto);
 }; 
 
+module.exports.getByIdRes = async (request, response, next) => {
+  let id = parseInt(request.params.id);
+  const producto = await prisma.producto.findUnique({
+    where: {
+      id: id,
+    },
+    include: {
+      restaurantes : true,
+    }
+  });
+  response.json(producto);
+}; 
+
 
 
 //Crear un producto

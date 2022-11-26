@@ -64,6 +64,7 @@ export class PedidosOrdenComponent implements OnInit {
      let infoOrden={
        'fechaOrden':new Date(this.fecha),
        'productos':detalles
+       
      }
      this.gService
      .create('orden',infoOrden)

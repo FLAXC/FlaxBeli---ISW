@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatCardModule} from '@angular/material/card';	
+import {MatBadgeModule} from '@angular/material/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AcercaDeComponent } from './acerca-de/acerca-de.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -26,7 +27,9 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     MatGridListModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatBadgeModule,
+
   ],
   exports: [HeaderComponent, FooterComponent],
 })

@@ -26,6 +26,17 @@ module.exports.getById = async (request, response, next) => {
   response.json(mesa);
 };
 
+module.exports.getByRestaurante = async (request, response, next) => {
+  
+  
+  let id=parseInt(request.params.id);
+  
+  const mesa=await prisma.mesa.findMany({
+      where:{ restauranteId:id,},
+  });
+  response.json(mesa);
+}; 
+
  class Contador{
   static m11 = 100;
   static me22 = 200;

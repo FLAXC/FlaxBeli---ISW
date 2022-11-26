@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import { MesasRestauranteModule } from './mesas-restaurante/mesas-restaurante.module';
 import { ShareModule } from './share/share.module';
 import { ProdutosModule } from './productos/produtos.module';
 import { PedidosModule } from './pedidos/pedidos.module';
+import { UserModule } from './user/user.module';
+
+import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
+
 
 
 @NgModule({
@@ -27,11 +31,12 @@ import { PedidosModule } from './pedidos/pedidos.module';
     MesasRestauranteModule, 
     ProdutosModule,
     PedidosModule,
-
+    UserModule, 
     //Siempre de ultimo
-    AppRoutingModule, 
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, 
+    useClass: HttpErrorInterceptorService, multi: true }, ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -12,6 +12,8 @@ const mesaRouter = require("./routes/mesaRouter");
 const productoRouter = require("./routes/productoRouter");
 const pedidoRouter = require("./routes/pedidoRouter");
 const restauranteRouter = require("./routes/restauranteRouter");
+const rolRouter = require("./routes/rolRoutes");
+const userRouter = require("./routes/userRoutes")
 // Acceder a la configuracion del archivo .env
 dotEnv.config();
 // Puerto que escucha por defecto 300 o definido .env
@@ -28,10 +30,12 @@ extended: true,
 })
 );
 //---- Definir rutas ----
-app.use("/mesa/",mesaRouter)
-app.use("/producto/",productoRouter)
-app.use("/pedido/",pedidoRouter)
-app.use("/restaurante",restauranteRouter)
+app.use("/mesa/",mesaRouter);
+app.use("/producto/",productoRouter);
+app.use("/pedido/",pedidoRouter);
+app.use("/restaurante",restauranteRouter);
+app.use("/rol/", rolRouter)
+app.use("/user/", userRouter);
 // Servidor
 app.listen(port, () => {
 console.log(`http://localhost:${port}`);

@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-mesas-index',
   templateUrl: './mesas-index.component.html',
@@ -13,13 +14,14 @@ export class MesasIndexComponent {
   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
-
+    private router: Router,
+    private route: ActivatedRoute,
     private gSevice: GenericService,
     private dialog:MatDialog
   ) { 
-    this.listaVideojuegos();
+    this.listaMesas();
     }
-    listaVideojuegos() {
+    listaMesas() {
       this.gSevice
         .list('mesa/')
         .pipe(takeUntil(this.destroy$))
