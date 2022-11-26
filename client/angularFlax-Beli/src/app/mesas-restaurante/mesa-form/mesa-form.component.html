@@ -9,10 +9,12 @@
         <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
-                <input  matInput type="number" formControlName="capacidad" min="1" max="6" class="form-control mb-2" placeholder="Capacidad"> 
+                <input  matInput type="number" formControlName="capacidad" min="1" max="6" class="form-control mb-2" placeholder="Capacidad" > 
                 <mat-error *ngIf="mesaForm.controls['capacidad'].hasError('required')">
-                  Capacidad es <strong>requerido</strong>
+                  Capacidad es <strong>requerido y debe ser un número del 1 al 6</strong>
                 </mat-error>
+
+                
               </mat-form-field>
             </div>
           </div>
@@ -25,7 +27,7 @@
                     {{ g.nombre }}
                   </mat-option>
                 </mat-select>
-                <mat-error *ngIf="mesaForm.controls['restauranteId'].hasError('required')">
+                <mat-error *ngIf="mesaForm.controls['restauranteId'].hasError('required')" >
                   Restaurante es <strong>requerido</strong>
                 </mat-error>
               </mat-form-field>

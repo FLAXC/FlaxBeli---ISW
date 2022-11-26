@@ -97,14 +97,14 @@
     <!-- https://fonts.google.com/icons -->
     <!--https://material.angular.io/guide/typography-->
 
-    <button
+    <!-- <button
     mat-icon-button matBadgeColor="accent" [matBadge]="qtyItems.toString()" 
     [routerLink]="'/pedidos/orden'" [routerLinkActive]="'mat-raised-button'"
     aria-label="Cantidad"
     >
       
       <mat-icon>shopping_cart</mat-icon>
-    </button>
+    </button> -->
 
     <span class="mat-caption" *ngIf="isAutenticated">{{ currentUser.user.nombre }}
     </span>
@@ -114,11 +114,11 @@
       >
     </button>
     <mat-menu #menu2="matMenu">
-      <a mat-menu-item *ngIf="!isAutenticated">
+      <a mat-menu-item *ngIf="!isAutenticated" (click)="login()">
         <mat-icon>person_add</mat-icon>
         <span> Login </span>
       </a>
-      <a mat-menu-item *ngIf="isAutenticated">
+      <a mat-menu-item *ngIf="isAutenticated" (click)="logout()">
         <mat-icon>person_remove</mat-icon>
         <span> Logout </span>
       </a>

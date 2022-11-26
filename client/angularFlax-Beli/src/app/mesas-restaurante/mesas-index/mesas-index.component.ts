@@ -30,4 +30,9 @@ export class MesasIndexComponent {
           this.datos = data;
         });
     }
+
+
+    comprar(){
+      this.router.navigate(['pedidos/productos']);
+    }
 }

@@ -41,7 +41,7 @@
             <mat-form-field class="full-width">
               <input matInput #codigoMesa maxlength="20" placeholder="Precio" formControlName="precio" type="number">
               <mat-error *ngIf="productoForm.controls['precio'].hasError('required')">
-                Precio es <strong>requerido</strong>
+                Precio es <strong>requerido y tiene que ser números</strong>
               </mat-error>
             </mat-form-field>
           </div>
