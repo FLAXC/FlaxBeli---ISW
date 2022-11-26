@@ -106,8 +106,7 @@
       <mat-icon>shopping_cart</mat-icon>
     </button>
 
-    <span class="mat-caption" *ngIf="isAutenticated"
-      >{{ currentUser.email }}
+    <span class="mat-caption" *ngIf="isAutenticated">{{ currentUser.user.nombre }}
     </span>
     <button mat-icon-button [matMenuTriggerFor]="menu2">
       <mat-icon [ngStyle]="{ color: isAutenticated ? 'white' : '#9E9E9E' }"

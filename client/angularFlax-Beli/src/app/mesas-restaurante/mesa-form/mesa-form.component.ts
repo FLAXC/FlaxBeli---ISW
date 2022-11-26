@@ -60,7 +60,6 @@ export class MesaFormComponent implements OnInit {
         estadoMesa: [null, Validators.required],
         restauranteId:[null, Validators.required]
       });
-     
     }
     listaRestaurantes() {
       this.restaurantesList = null;

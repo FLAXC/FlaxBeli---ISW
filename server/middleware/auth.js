@@ -14,7 +14,7 @@ module.exports.verifyToken = async (req, res, next) => {
   }
   if (token) {
     const verify = jwt.verify(token, process.env.SECRET_KEY);
-    const user = await prisma.Usuario.findUnique({
+    const user = await prisma.usuario.findUnique({
       where: {
         email: verify.email,
       },
