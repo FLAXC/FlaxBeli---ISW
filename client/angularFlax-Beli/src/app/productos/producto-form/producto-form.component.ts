@@ -62,7 +62,7 @@ export class ProductoFormComponent implements OnInit {
         nombre:[null, Validators.required],
         descripcion:[null, Validators.required],
         ingredientes: [null, Validators.required],
-        precio: [null, Validators.required],
+        precio: [null, Validators.required,Validators.pattern(/^[1-9]\d{6,10}$/)],
         estado: [null, Validators.required],
         categoria: [null, Validators.required],
         restaurantes:[null, Validators.required]
