@@ -21,20 +21,27 @@ export class HeaderComponent implements OnInit {
     let user = { 
       name:"Tom", 
       email:"tHanks@prueba.com" 
-   }; 
+   };
     this.currentUser=user; */
     //Subscripción a la información del usuario actual
     this.authService.currentUser.subscribe((x) => (this.currentUser = x));
     
     //Subscripción al booleano que indica si esta autenticado
     this.authService.isAuthenticated.subscribe(
-      (valor) => (this.isAutenticated = valor)
+      (valor) => (this.isAutenticated = valor, this.currentUser)
     );
     //Suscribirse al observable que gestiona la cantidad de items del carrito
     this.cartService.countItems.subscribe((value)=>{
       console.log(value);
       this.qtyItems=value;
     });
+  }
+  login(){
+    this.router.navigate(['usuario/login']);
+  }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['usuario/login']);
   }
 
 }

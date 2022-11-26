@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotificacionService } from 'src/app/share/notification.service';
 import { AuthenticationService } from 'src/app/share/authentication.service';
 
+
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
@@ -16,11 +17,12 @@ import { AuthenticationService } from 'src/app/share/authentication.service';
 export class UserCreateComponent implements OnInit {
   hide = true;
   usuario: any;
+  restaurantesList:any;
   roles: any;
   formCreate: FormGroup;
   makeSubmit: boolean = false;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  restaurantesList:any;
+
   constructor(
     public fb: FormBuilder,
     private router: Router,
@@ -39,8 +41,8 @@ export class UserCreateComponent implements OnInit {
       restauranteId: [null, Validators.required],
     });
     this.getRoles();
+    this.listaRestaurantes();
   }
-
   listaRestaurantes() {
     this.restaurantesList = null;
     this.gService

@@ -33,7 +33,7 @@ module.exports.register = async (request, response, next) => {
 module.exports.login = async (request, response, next) => {
   let userReq = request.body;
   //Buscar el usuario según el email dado
-  const user = await prisma.Usuario.findUnique({
+  const user = await prisma.usuario.findUnique({
     where: {
       email: userReq.email,
     },
@@ -54,10 +54,11 @@ module.exports.login = async (request, response, next) => {
       email: user.email,
       role: user.role,
     };
+ 
     //Crea el token con el payload, llave secreta
     // y el tiempo de expiración
     const token = jwt.sign(payload, process.env.SECRET_KEY, {
-      expiresIn: process.env.JWT_EXPIRE,
+      expiresIn: process.env.JWT_EXPIRE, 
     });
     response.json({
       success: true,
