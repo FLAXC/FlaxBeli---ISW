@@ -1,8 +1,55 @@
+.contenedor{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
 .footer-row {
-    font-weight: bold;
-  }
+  font-weight: bold;
+}
+.pageSizeOptions {
+  color: black;
+}
+.pageSize {
+  color: black;
+}
+.pageIndex {
+  color: black;
+}
 
-  body{
-    background-color: black;
-  }
-  
+.full-width-table {
+  width: 100%;
+  color: yellow;
+  background-color: black;
+}
+
+.contenedorYcubierto{
+    padding-top: 90px;
+    left: 80px;
+    padding: 70px;
+    display: block;
+}
+.concuchara{
+  padding-top: 90px;
+  left: 840px;
+  padding: 70px;
+  display: block;
+}
+th {
+  color: white;
+}
+td {
+  color: yellow;
+}
+
+.mat-paginator {
+  background-color: yellow;
+}
+.colorBotones {
+  background-color: yellow;
+  color: black;
+}
+.colorBotonesEdi {
+  background-color: white;
+  color: black;
+  text-align: center;
+}
