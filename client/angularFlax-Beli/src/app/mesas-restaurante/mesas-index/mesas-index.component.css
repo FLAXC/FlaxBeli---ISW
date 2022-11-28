@@ -11,11 +11,15 @@ h1{
   font-style:italic;
   font-weight:bold;
   text-decoration:underline;
-  color: white;
+  color: yellow;
   text-align: center;
   padding-top: 80px;
+
   }
 
+  .fondo_texto{
+    background-color: black
+  }
 .azul {
     color:blue;
     }
