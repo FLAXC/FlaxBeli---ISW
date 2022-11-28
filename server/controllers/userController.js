@@ -46,7 +46,7 @@ module.exports.login = async (request, response, next) => {
     });
   }
   //Verifica la contraseña
-  const checkPassword = bcrypt.compare(userReq.password, user.password);
+  const checkPassword = bcrypt.compareSync(userReq.password,user.password);
   if (checkPassword) {
     //Si el usuario es correcto: email y password
     //Crear el token

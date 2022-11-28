@@ -65,7 +65,7 @@
     >
       Listado de pedidos
     </button>
-    <button
+    <!-- <button
       class="buttonMenu"
       mat-menu-item
       [routerLink]="['/pedidos/productos']"
@@ -73,7 +73,7 @@
       [routerLinkActiveOptions]="{ exact: false }"
     >
       Ordenar
-    </button>
+    </button> -->
 
     
   </mat-menu>
@@ -97,14 +97,14 @@
     <!-- https://fonts.google.com/icons -->
     <!--https://material.angular.io/guide/typography-->
 
-     <button
+     <!-- <button
     mat-icon-button matBadgeColor="accent" [matBadge]="qtyItems.toString()" 
     [routerLink]="'/pedidos/orden'" [routerLinkActive]="'mat-raised-button'"
     aria-label="Cantidad"
     >
       
       <mat-icon>shopping_cart</mat-icon>
-    </button>
+    </button> -->
 
     <span class="mat-caption" *ngIf="isAutenticated">{{ currentUser.user.nombre}}
     </span>
