@@ -111,7 +111,7 @@ export class ProductoFormComponent implements OnInit {
     if(this.productoForm.invalid){
       return;
     }
-    let gFormat:any=this.productoForm.get('restaurantes')?.value.map(x=>({['id']: x }));
+    let gFormat:any=this.productoForm.get('restaurantes').value.map(x=>({['id']: x }));
     this.productoForm.patchValue({ restaurantes:gFormat});
     console.log(this.productoForm.value);
     this.gService.update('producto',this.productoForm.value)

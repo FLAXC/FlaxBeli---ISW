@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/share/cart.service';
 @Component({
   selector: 'app-mesas-index',
   templateUrl: './mesas-index.component.html',
@@ -17,7 +18,8 @@ export class MesasIndexComponent {
     private router: Router,
     private route: ActivatedRoute,
     private gSevice: GenericService,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private cartService: CartService,
   ) { 
     this.listaMesas();
     }
@@ -31,12 +33,14 @@ export class MesasIndexComponent {
         });
     }
 
-
-    comprar(id:number){
-      this.gSevice
-    .get('restauranteId',id)
-    .pipe(takeUntil(this.destroy$))
+    crearComanda(idMesa: number) {
+      this.cartService.idMesa = idMesa;
+      this.cartService.refrescarCarrito();
       this.router.navigate(['pedidos/orden']);
+    }
+    
+    productos(idResta:number){
+      this.router.navigate(['pedidos/orden',idResta]);
     }
 
     // comprar(id:number){
