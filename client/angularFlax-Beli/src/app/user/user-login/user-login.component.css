@@ -8,6 +8,7 @@ mat-form-field.mat-form-field {
   .shipping-card {
     min-width: 120px;
     margin: 20px auto;
+    background-color: black;
   }
   
   .mat-radio-button {

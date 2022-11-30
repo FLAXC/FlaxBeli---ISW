@@ -49,8 +49,8 @@
           <div class="row">
             <div class="col">
               <mat-label>Estado</mat-label><br>
-              <mat-radio-group formControlName="estado">
-                <mat-radio-button value="Habilitado">A la venta</mat-radio-button>
+              <mat-radio-group  formControlName="estado">
+                <mat-radio-button  value="Habilitado">A la venta</mat-radio-button>
                 <mat-radio-button value="Inhabilitado">Agotado</mat-radio-button>
               </mat-radio-group>
               <mat-error *ngIf="productoForm.controls['estado'].touched &&
@@ -91,7 +91,7 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Guardar</button>
+      <button style="background-color: yellow; color: black;" mat-raised-button color="primary" type="submit">Guardar</button>
     </mat-card-actions>
   </mat-card>
 </form>

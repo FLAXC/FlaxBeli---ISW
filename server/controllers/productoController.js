@@ -66,6 +66,13 @@ module.exports.update = async (request, response, next) => {
   let idProducto = parseInt(request.params.id);
   const productoViejo = await prisma.producto.findUnique({
     where: { id: idProducto },
+    include: {
+      restaurantes: {
+        select:{
+          id:true
+        }
+      }
+    }
   });
 
   const newProducto = await prisma.producto.update({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
-import { CartService } from 'src/app/share/cart-service.service';
+import { CartService } from 'src/app/share/cart.service';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notificacion-service.service';
 import { ProductosDetailComponent } from 'src/app/productos/productos-detail/productos-detail.component';

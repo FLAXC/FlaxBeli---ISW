@@ -3,12 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { MesasIndexComponent } from './mesas-index/mesas-index.component';
 import { MesaAllComponent } from './mesa-all/mesa-all.component';
 import { MesaFormComponent } from './mesa-form/mesa-form.component';
+import { AuthGuard } from '../share/guards/auth.guard';
 
 const routes: Routes = [
-  {path:'mesas-restaurante', component: MesasIndexComponent},
-  {path:'mesas/all', component: MesaAllComponent},
-  {path:'mesas/create',component: MesaFormComponent},
-  {path:'mesas/update/:id',component: MesaFormComponent},
+  {path:'mesas-restaurante', component: MesasIndexComponent, canActivate:[AuthGuard], data:{
+    roles:['Administrador','Empleado', 'Cliente']
+  }},
+  {path:'mesas/all', component: MesaAllComponent, canActivate:[AuthGuard], data:{
+    roles:['Administrador','Empleado']
+  }},
+  {path:'mesas/create',component: MesaFormComponent, canActivate:[AuthGuard], data:{
+    roles:['Administrador','Empleado']
+  }},
+  {path:'mesas/update/:id',component: MesaFormComponent, canActivate:[AuthGuard], data:{
+    roles:['Administrador','Empleado']
+  }},
   {path:'mesas/porRestaurante/:id',component: MesasIndexComponent},
 ];
 

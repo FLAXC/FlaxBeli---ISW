@@ -32,6 +32,7 @@ module.exports.register = async (request, response, next) => {
 };
 module.exports.login = async (request, response, next) => {
   let userReq = request.body;
+  console.log(userReq);
   //Buscar el usuario según el email dado
   const user = await prisma.usuario.findUnique({
     where: {

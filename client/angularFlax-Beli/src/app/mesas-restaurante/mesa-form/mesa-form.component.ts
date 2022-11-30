@@ -49,7 +49,6 @@ export class MesaFormComponent implements OnInit {
     
         });
   }
-
     //Crear Formulario
     formularioReactive(){
       //[null, Validators.required]
@@ -101,7 +100,6 @@ export class MesaFormComponent implements OnInit {
     if(this.mesaForm.invalid){
       return;
     }
-    console.log(this.mesaForm.value);
     this.gService.update('mesa',this.mesaForm.value)
     .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
       this.respMesa=data;
