@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { CartService, ItemCart  } from 'src/app/share/cart-service.service';
+import { CartService, ItemCart  } from 'src/app/share/cart.service';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notificacion-service.service';
 import { ProductosDetailComponent } from 'src/app/productos/productos-detail/productos-detail.component';
@@ -23,10 +23,12 @@ export class PedidosOrdenComponent implements OnInit {
   datos: any;
   destroy$: Subject<boolean> = new Subject<boolean>();
   //Tabla
-  displayedColumns: string[] = ['producto', 'precio', 'cantidad', 'subtotal','acciones'];
-  displayedColumnsProducts: string[] = ['nombre', 'descripcion','precio',"accionesCompra"];
+  displayedColumns: string[] = ['producto', 'precio', 'cantidad','notas', 'subtotal','acciones'];
+  displayedColumnsProducts: string[] = ['nombre', 'descripcion','precio',"accionesCompra",'acciones'];
   dataSource = new MatTableDataSource<any>();
   dataSourceProducts = new MatTableDataSource<any>();
+  datosDialog: any;
+  idResta:any;
   constructor(
     private cartService: CartService,
     private noti: NotificacionService,
@@ -34,25 +36,29 @@ export class PedidosOrdenComponent implements OnInit {
     private router: Router,
     private dialog:MatDialog,
     private notificacion:NotificacionService,
+    private activeRouter: ActivatedRoute,
     ){
-      this.listaProductos();
      }
 
   ngOnInit(): void {
+    this.activeRouter.params.subscribe((params:Params)=>{
+      this.idResta=params['id'];
+    });
     this.cartService.currentDataCart$.subscribe(data=>{
       this.dataSource=new MatTableDataSource(data);
     })
     this.total=this.cartService.getTotal();
-    this.listaProductos();
+    this.listaProductos(this.idResta); 
   }
 
-  listaProductos() {
+
+  listaProductos(id:number) {
     this.gService
-      .list('producto/')
+      .get('restaurante/restaurante', id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         console.log(data);
-        this.datos = data;
+        this.datos = data.productos;
         this.dataSourceProducts= new MatTableDataSource(this.datos);
         this.dataSourceProducts.sort = this.sort;
         this.dataSourceProducts.paginator = this.paginator;

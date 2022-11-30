@@ -4,7 +4,7 @@ body {
   background-repeat: repeat;
   background-attachment: fixed;
   scroll-snap-type: none;
-  padding-bottom: 80ipx;
+  padding-bottom: 80px;
 }
 h1{
   padding:5px;
@@ -35,10 +35,10 @@ h1{
   
   .dashboard-card {
     position: absolute;
-    top: 15px;
+    top: 0px;
     left: 15px;
     right: 15px;
-    bottom: 15px;
+    bottom: 0px;
     color: yellow;
     background-image: url(https://static4.depositphotos.com/1010889/274/v/450/depositphotos_2743618-stock-illustration-vector-realistic-wood-texture-background.jpg);
     background-repeat: no-repeat;

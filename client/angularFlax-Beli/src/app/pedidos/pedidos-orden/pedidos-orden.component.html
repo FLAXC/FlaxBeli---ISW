@@ -30,16 +30,31 @@
   
   
             <ng-container matColumnDef="accionesCompra">
-              <th mat-header-cell *matHeaderCellDef style="text-align:center; padding-left: 50px;">Agregar</th>
+              <th mat-header-cell *matHeaderCellDef style="text-align:center; padding-left: 10px;">Agregar</th>
               <td mat-cell *matCellDef="let row" style="text-align:center;">
+                <button  class="colorBotonesEdi"
+                  mat-mini-fab
+                  matTooltip="Agregar Producto"
+                  aria-label="Agregar Producto"
+                  color="primary"
+                  (click)="comprar(row.id)"
+                >
+                <mat-icon class="mat-18">add_shopping_cart</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef>Detalle</th>
+              <td mat-cell *matCellDef="let row">
                 <button class="colorBotonesEdi"
                   mat-mini-fab
                   matTooltip="Detalle Producto"
                   aria-label="Detalle Producto"
                   color="primary"
-                  (click)="comprar(row.id)"
+                  (click)="detalleProducto(row.id)"
                 >
-                  <mat-icon style="text-align: center;">add</mat-icon>
+                  <mat-icon class="mat-18">info</mat-icon>
                 </button>
               </td>
             </ng-container>
@@ -86,11 +101,23 @@
             </mat-cell>
             <mat-footer-cell *matFooterCellDef >Total </mat-footer-cell>
             </ng-container>
+
+            <ng-container matColumnDef="notas">
+              <mat-header-cell *matHeaderCellDef style="padding-left: 70px;"> Notas </mat-header-cell>
+              <mat-cell *matCellDef="let element" style="padding-right: 30px;"> 
+                <mat-form-field appearance="fill" style="padding-right: 10px;">
+                    <input matInput id="notas" type="text" class="form-control mb-2" 
+                    [(ngModel)]="element.notas"> 
+                </mat-form-field> 
+                
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef >Total </mat-footer-cell>
+            </ng-container>
     
             <ng-container matColumnDef="subtotal">
               <mat-header-cell *matHeaderCellDef  style="padding-left: 110px;"> Subtotal </mat-header-cell>
-              <mat-cell *matCellDef="let element" style="padding-left: 50px;"> {{ element.subtotal | currency }} </mat-cell>
-              <mat-footer-cell *matFooterCellDef >{{total | currency}}</mat-footer-cell>
+              <mat-cell *matCellDef="let element" style="padding-left: 50px;"> {{ element.subtotal | currency:"₡" }} </mat-cell>
+              <mat-footer-cell *matFooterCellDef >{{total | currency:"₡"}}</mat-footer-cell>
             </ng-container>
     
             <ng-container matColumnDef="acciones">
@@ -110,7 +137,7 @@
           
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-flat-button color="accent" (click)="registrarOrden()" >
+        <button style="background-color: yellow; color: black;" mat-flat-button color="accent" (click)="registrarOrden()" >
             Comprar
             <mat-icon>shopping_bag</mat-icon> 
             </button>

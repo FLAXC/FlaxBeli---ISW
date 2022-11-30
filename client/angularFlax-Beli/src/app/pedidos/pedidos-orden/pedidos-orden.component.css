@@ -1,7 +1,10 @@
 .contenedor{
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   display: flex;
+
+}
+body{
   background-image:  url("https://us.123rf.com/450wm/merfin/merfin1812/merfin181200046/127109225-dibujado-a-mano-conjunto-de-garabatos-de-comida-r%C3%A1pida-icono-y-elementos.jpg?ver=6");
 }
 .footer-row {
@@ -22,18 +25,22 @@
   color: yellow;
   background-color: black;
 }
+.full-width{
+  background-color: black;
+}
 
 .contenedorYcubierto{
     padding-top: 90px;
-    left: 80px;
-    padding: 70px;
+    padding-left: 50px;
     display: block;
+    max-width: 90%;
 }
 .concuchara{
   padding-top: 90px;
-  left: 840px;
-  padding: 70px;
   display: block;
+  padding-left: 50px;
+  width: 100%;
+  max-width: 99%;
 }
 th {
   color: white;
@@ -53,9 +60,4 @@ td {
   background-color: white;
   color: black;
   text-align: center;
-}
-
-
-body {
-background-color: black;
 }

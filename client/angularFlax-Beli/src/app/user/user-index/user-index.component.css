@@ -4,3 +4,15 @@
     justify-content: center;
     align-items: center;
   }
+  .contenedor{
+    background-color: black;
+    color: yellow;
+  }
+  body{
+    background-color: black;
+  }
+
+  .hover:hover{
+    background-color: yellow;
+    color:black;
+  }

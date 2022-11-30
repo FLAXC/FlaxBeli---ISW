@@ -1,4 +1,4 @@
-const {  PrismaClient } = require("@prisma/client");
+const {  PrismaClient, EstadoMesa } = require("@prisma/client");
 const prisma = new PrismaClient();
 module.exports.get = async (request, response, next) => {
   const mesas = await prisma.mesa.findMany({
@@ -11,8 +11,6 @@ module.exports.get = async (request, response, next) => {
   });
   response.json(mesas);
 };
-
-
 module.exports.getById = async (request, response, next) => {
   let id = parseInt(request.params.id);
   const mesa = await prisma.mesa.findUnique({
@@ -113,7 +111,7 @@ module.exports.update = async (request, response, next) => {
     data: {
       codigoMesa: codigo,
       capacidad: parseInt(mesa.capacidad),
-      estodoMesa: mesa.estodoMesa,
+      estadoMesa: mesa.estadoMesa,
       restauranteId: mesa.restauranteId,
     },
   });

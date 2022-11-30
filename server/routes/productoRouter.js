@@ -13,4 +13,6 @@ router.get("/:id",productoController.getById);
 
 router.put("/:id",productoController.update);
 
+router.get("/producto/:id",productoController.getByIdRes);
+
 module.exports=router;
