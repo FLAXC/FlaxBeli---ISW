@@ -1,0 +1,7 @@
+.template{
+    border-color: yellow black yellow;
+    border-width: 5px;
+    border-style: solid;
+    padding-left: 20px;
+    padding-right: 20px;
+}

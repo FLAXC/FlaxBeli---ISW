@@ -78,7 +78,20 @@
     
   </mat-menu>
 
-  <button class="buttonMenu" mat-button>Restaurante</button>
+  <button class="buttonMenu" mat-button [matMenuTriggerFor]="usuarios">
+    Usuarios
+  </button>
+  <mat-menu #usuarios ="matMenu" yPosition="above" overlapTrigger="false">
+    <button
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['/user/all']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Mantenimiento
+    </button>
+  </mat-menu>
 
   <button
     class="buttonMenu"

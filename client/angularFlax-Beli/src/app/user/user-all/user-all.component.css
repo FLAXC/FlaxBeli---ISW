@@ -1,0 +1,36 @@
+.full-width-table {
+    width: 100%;
+    color: yellow;
+    background-color: black;
+  }
+
+  th{
+    color: white;
+  }
+  td{
+    color: yellow;
+  }
+  
+  .mat-paginator{
+    background-color:yellow;
+    color: black
+    }
+    
+    .colorBotones{
+      background-color: yellow;
+      color: black;
+    }
+    .colorBotonesEdi{
+      background-color: white;
+      color: black;
+    }
+    
+    body {
+      background-color: black;
+    }
+
+    mat-card-title{
+      margin-left: 25px;
+      color: white
+    }
+    
