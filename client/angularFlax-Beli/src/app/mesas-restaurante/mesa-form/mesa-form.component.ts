@@ -55,10 +55,11 @@ export class MesaFormComponent implements OnInit {
       this.mesaForm=this.fb.group({
         id:[null,null],
         codigoMesa:[null,null],
-        capacidad:[null, Validators.required, Validators.pattern(/^[1-9]\d{6,10}$/)],
+        capacidad:[null, Validators.required],
         estadoMesa: [null, Validators.required],
         restauranteId:[null, Validators.required]
       });
+      //, Validators.pattern(/^[1-9]\d{6,10}$/)
     }
     listaRestaurantes() {
       this.restaurantesList = null;

@@ -5,6 +5,9 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserAllComponent } from './user-all/user-all.component';
+import { UserDeatilComponent } from './user-deatil/user-deatil.component'; 
 
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -16,14 +19,19 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from "@angular/material/dialog";
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
-import {MatCardModule} from '@angular/material/card'; 
+import {MatCardModule} from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 @NgModule({
   declarations: [
     UserCreateComponent,
     UserIndexComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    UserFormComponent,
+    UserAllComponent,
+    UserDeatilComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +46,7 @@ import {MatCardModule} from '@angular/material/card';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
+    MatTableModule
   ],
 })
 export class UserModule { }
