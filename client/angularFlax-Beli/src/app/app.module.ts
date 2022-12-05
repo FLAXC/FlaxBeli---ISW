@@ -15,6 +15,7 @@ import { PedidosModule } from './pedidos/pedidos.module';
 import { UserModule } from './user/user.module';
 
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 
 
@@ -33,7 +34,7 @@ import { HttpErrorInterceptorService } from './share/http-error-interceptor.serv
     PedidosModule,
     UserModule, 
     //Siempre de ultimo
-    AppRoutingModule,
+    AppRoutingModule, UsuariosModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, 
     useClass: HttpErrorInterceptorService, multi: true }, ],

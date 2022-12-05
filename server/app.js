@@ -14,6 +14,7 @@ const pedidoRouter = require("./routes/pedidoRouter");
 const restauranteRouter = require("./routes/restauranteRouter");
 const rolRouter = require("./routes/rolRoutes");
 const userRouter = require("./routes/userRoutes")
+const usuarioRouter = require("./routes/usuariosRouter")
 // Acceder a la configuracion del archivo .env
 dotEnv.config();
 // Puerto que escucha por defecto 300 o definido .env
@@ -36,6 +37,7 @@ app.use("/pedido/",pedidoRouter);
 app.use("/restaurante",restauranteRouter);
 app.use("/rol/", rolRouter)
 app.use("/user/", userRouter);
+app.use("/usuario/", usuarioRouter);
 // Servidor
 app.listen(port, () => {
 console.log(`http://localhost:${port}`);

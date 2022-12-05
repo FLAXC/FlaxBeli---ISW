@@ -78,5 +78,4 @@ export class UserLoginComponent implements OnInit {
       (this.makeSubmit || this.formulario.controls[control].touched)
     );
   };
-
 }

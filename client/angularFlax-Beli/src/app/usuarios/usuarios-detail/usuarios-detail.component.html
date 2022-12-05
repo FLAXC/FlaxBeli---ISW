@@ -1,0 +1,14 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="primary">close</mat-icon>
+  </button>
+  <div *ngIf="datos" class="template">
+  <mat-dialog-content >
+    <h4><strong>Detalle del usuario</strong> </h4>
+    <h4><strong>Código del Restaurante:</strong> {{datos.restauranteId}}</h4>
+    <h4 *ngIf="datos.restaurante"><strong>Nombre del Restaurante:</strong> {{datos.restaurante.nombre}}</h4>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+   
+  </mat-dialog-actions>
+  </div>
