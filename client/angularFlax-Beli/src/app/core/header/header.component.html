@@ -3,7 +3,8 @@
     <p class="titulo">FlaxBeli</p>
   </div>
 
-  <button
+  <div *ngIf="isAutenticated || isCliente">
+    <button
     class="buttonMenu"
     mat-button
     [routerLink]="['/home']"
@@ -12,12 +13,11 @@
   >
     Inicio
   </button>
-
-  <button class="buttonMenu" mat-button [matMenuTriggerFor]="aboveMenu">
+  <button *ngIf="!isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="aboveMenu">
     Mesas
   </button>
   <mat-menu #aboveMenu="matMenu" yPosition="above" overlapTrigger="false">
-    <button
+    <button 
       class="buttonMenu"
       mat-menu-item
       [routerLink]="['/mesas-restaurante']"
@@ -37,7 +37,7 @@
     </button>
   </mat-menu>
 
-  <button class="buttonMenu" mat-button [matMenuTriggerFor]="productos">
+  <button *ngIf="!isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="productos">
     Productos
   </button>
   <mat-menu #productos="matMenu" yPosition="above" overlapTrigger="false">
@@ -52,7 +52,7 @@
     </button>
   </mat-menu>
 
-  <button class="buttonMenu" mat-button [matMenuTriggerFor]="pedido">
+  <button *ngIf="!isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="pedido">
     Pedidos
   </button>
   <mat-menu #pedido="matMenu" yPosition="above" overlapTrigger="false">
@@ -78,20 +78,24 @@
     
   </mat-menu>
 
-  <button class="buttonMenu" mat-button [matMenuTriggerFor]="usuarios">
+  <button *ngIf="!isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="usuarios">
     Usuarios
   </button>
   <mat-menu #usuarios ="matMenu" yPosition="above" overlapTrigger="false">
     <button
       class="buttonMenu"
       mat-menu-item
-      [routerLink]="['/user/all']"
+      [routerLink]="['/usuarios/all']"
       routerLinkActive="is-active"
       [routerLinkActiveOptions]="{ exact: false }"
     >
       Mantenimiento
     </button>
   </mat-menu>
+
+  <button *ngIf="isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="usuarios">
+    Pedido Online
+  </button>
 
   <button
     class="buttonMenu"
@@ -103,6 +107,9 @@
   >
     Acerca de
   </button>
+
+</div>
+  
 
   <span class="example-spacer"></span>
   <div class="example-spacer">
@@ -127,7 +134,7 @@
       >
     </button>
     <mat-menu #menu2="matMenu">
-      <a mat-menu-item *ngIf="!isAutenticated" (click)="login()">
+      <a mat-menu-item *ngIf="!isAutenticated"  (click)="login()">
         <mat-icon>person_add</mat-icon>
         <span> Login </span>
       </a>

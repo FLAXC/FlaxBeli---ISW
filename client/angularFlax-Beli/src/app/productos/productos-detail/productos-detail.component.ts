@@ -36,8 +36,6 @@ export class ProductosDetailComponent implements OnInit {
   }
 
   close() {
-    //Dentro de close ()
-    //this.form.value
     this.dialogRef.close();
   }
 }

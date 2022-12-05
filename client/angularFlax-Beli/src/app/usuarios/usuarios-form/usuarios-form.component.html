@@ -1,0 +1,70 @@
+<body>
+    <form [formGroup]="usuarioForm" novalidate (ngSubmit)="isCreate ? crearUsuario(): actualizarUsuario()">
+        <input type="hidden" formControlName="id" />
+        <mat-card class="shipping-card">
+          <mat-card-header>
+            <mat-card-title>{{titleForm}}Usuario</mat-card-title>
+          </mat-card-header>
+          <mat-card-content> <br>
+            <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" placeholder="Email usuario" formControlName="email" />
+                   <mat-error *ngIf="errorHandling('email', 'required')">
+                      Email es <strong>requerido</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password usuario" formControlName="password" />
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                   <mat-error *ngIf="errorHandling('password', 'required')">
+                      Password es <strong>requerido</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col">
+                  <mat-label>Estado</mat-label><br>
+                  <mat-radio-group formControlName="role">
+                    <mat-radio-button value="Administrador">Administrador</mat-radio-button>
+                    <mat-radio-button value="Cliente" >Cliente</mat-radio-button>
+                    <mat-radio-button value="Mesero">Mesera</mat-radio-button>
+                  </mat-radio-group>
+                  <mat-error *ngIf="usuarioForm.controls['role'].touched &&
+                   usuarioForm.controls['role'].hasError('required')">
+                    Estado es <strong>requerido</strong>
+                  </mat-error>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col" *ngIf="restaurantesList">
+                  <mat-form-field class="full-width">
+                    <mat-select placeholder="Restaurantes" formControlName="restauranteId" >
+                      <mat-option *ngFor="let g of restaurantesList" [value]="g.id">
+                        {{ g.nombre }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="usuarioForm.controls['restauranteId'].hasError('required')" >
+                      Restaurante es <strong>requerido</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button style="background-color: yellow; color: black;" mat-raised-button color="primary" type="submit">Guardar</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </body>

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AfterViewInit} from '@angular/core';
+import { AfterViewInit, Component} from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -8,14 +7,14 @@ import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { UserDeatilComponent } from '../user-deatil/user-deatil.component';
+import { UsuariosDetailComponent } from '../usuarios-detail/usuarios-detail.component';
 
 @Component({
-  selector: 'app-user-all',
-  templateUrl: './user-all.component.html',
-  styleUrls: ['./user-all.component.css']
+  selector: 'app-usuarios-all',
+  templateUrl: './usuarios-all.component.html',
+  styleUrls: ['./usuarios-all.component.css']
 })
-export class UserAllComponent implements AfterViewInit {
+export class UsuariosAllComponent implements AfterViewInit {
   datos:any;
   destroy$:Subject<boolean>= new Subject<boolean>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -25,16 +24,12 @@ export class UserAllComponent implements AfterViewInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id','email','nombre',"role","acciones","acciones2"];
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private gService:GenericService,
     private dialog:MatDialog
-  ) {
-
-   }
-
+  ) { }
   ngAfterViewInit(): void {
     this.listaUsuarios();
   }
@@ -58,18 +53,17 @@ export class UserAllComponent implements AfterViewInit {
     dialogConfig.data={
       id:id
     };
-    this.dialog.open(UserDeatilComponent,dialogConfig);
+    this.dialog.open(UsuariosDetailComponent,dialogConfig);
   }
-  
 
   crearUsuario() {
-    this.router.navigate(['/user/create'], {
+    this.router.navigate(['/usuarios/create'], {
       relativeTo: this.route,
     });
   }
 
   actualizarUsuario(id: number) {
-    this.router.navigate(['/user/update', id], {
+    this.router.navigate(['/usuarios/update', id], {
       relativeTo: this.route,
     });
   }

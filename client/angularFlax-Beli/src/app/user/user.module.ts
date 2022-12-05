@@ -5,9 +5,6 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { UserFormComponent } from './user-form/user-form.component';
-import { UserAllComponent } from './user-all/user-all.component';
-import { UserDeatilComponent } from './user-deatil/user-deatil.component'; 
 
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -29,9 +26,6 @@ import { MatTableModule } from '@angular/material/table';
     UserCreateComponent,
     UserIndexComponent,
     UserLoginComponent,
-    UserFormComponent,
-    UserAllComponent,
-    UserDeatilComponent
   ],
   imports: [
     CommonModule,

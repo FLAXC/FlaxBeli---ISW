@@ -21,7 +21,7 @@ module.exports.register = async (request, response, next) => {
       nombre: userData.nombre,
       role: Role[userData.role],
       password: hash,
-      restauranteId: userData.restauranteId,
+      restauranteId: 1043,
     },
   });
   response.status(200).json({
