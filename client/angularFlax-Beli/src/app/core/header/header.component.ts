@@ -11,9 +11,12 @@ export class HeaderComponent implements OnInit {
   isAutenticated: boolean;
   currentUser: any;
   qtyItems:Number = 0;
+  isCliente:boolean = false;
+  sesion:boolean = false;
+  isTrue:Number = 0;
   constructor(private cartService: CartService,
     private authService: AuthenticationService,
-    private router: Router) { }
+    private router: Router) {}
 
   ngOnInit(): void {
       //Valores de prueba
@@ -30,19 +33,23 @@ export class HeaderComponent implements OnInit {
     this.authService.isAuthenticated.subscribe(
       (valor) => (this.isAutenticated = valor, this.currentUser)
     );
+    if(this.currentUser.user.role == 'Cliente'){
+      this.isCliente=true;
+    }
     //Suscribirse al observable que gestiona la cantidad de items del carrito
     this.cartService.countItems.subscribe((value)=>{
       console.log(value);
       this.qtyItems=value;
     });
+  
   }
   login(){
     this.router.navigate(['usuario/login']);
   }
   logout() {
+    this.sesion=false;
     localStorage.clear();
     this.authService.logout();
     this.router.navigate(['usuario/login']);
   }
-
 }

@@ -36,9 +36,8 @@ export class UserCreateComponent implements OnInit {
     this.formCreate = this.fb.group({
       email: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
-      role: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      restauranteId: [null, Validators.required],
+      restauranteId: [1043, Validators.required],
     });
     this.getRoles();
     this.listaRestaurantes();
