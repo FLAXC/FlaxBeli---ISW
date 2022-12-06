@@ -1,6 +1,6 @@
 <body>
 <div class="grid-container">
-    <h1 class="mat-h1" style="color: yellow"><strong>Productos disponibles</strong> </h1>
+    <h1 class="mat-h1" style="color: yellow" text-align="center"><strong>Restaurantes disponibles</strong> </h1>
     <mat-grid-list [cols]="3" rowHeight="12em" gutterSize="10px" *ngIf="datos">
       <mat-grid-tile *ngFor="let item of datos" >
         <mat-card class="dashboard-card">
@@ -11,13 +11,11 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <div style="margin-bottom: 1000;"> {{
-              item.precio | currency: "₡" 
-            }}</div>
+            <div style="margin-bottom: 1000;"> {{ item.precio | currency: "₡" }}</div>
           </mat-card-content>
           <mat-divider inset></mat-divider>
           <mat-card-actions>
-            <button
+            <!-- <button
             mat-mini-fab color="accent"
             matTooltip="Detalle Producto"
             aria-label="Detalle Producto"
@@ -25,13 +23,13 @@
             (click)="detalleProducto(item.id)"
           >
           <mat-icon class="mat-18">info</mat-icon>
-          </button>
-          <button
+          </button> -->
+          <button style="background-color: yellow; color: black ;"
             mat-mini-fab color="accent"
             matTooltip="Comprar"
             aria-label="Comprar"
             color="primary"
-            (click)="comprar(item.id)"
+            (click)="crearComandaCliente(item.id)"
           >
           
           <mat-icon class="mat-18">add_shopping_cart</mat-icon>
