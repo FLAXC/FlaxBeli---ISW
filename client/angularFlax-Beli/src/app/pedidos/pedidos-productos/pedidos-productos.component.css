@@ -1,5 +1,7 @@
 .grid-container {
-    margin: 20px;
+    padding-top: 40px;
+    text-align: center;
+    
   }
   
   .dashboard-card {
@@ -9,8 +11,12 @@
     right: 15px;
     bottom: 15px;
     color: yellow;
-    background-image : url(https://media.istockphoto.com/photos/dark-table-setting-empty-black-ceramic-plate-knife-and-fork-on-stone-picture-id1223334575?k=20&m=1223334575&s=170667a&w=0&h=GdeBVDyn3Vo_IgtBi1gRRnb3OMHD2UtZL1YBMavk_7s=)
+    background-image : url(https://static.vecteezy.com/system/resources/thumbnails/001/900/914/small/blurred-restaurant-scene-with-empty-tabletop-free-photo.jpg);
+    background-repeat:  no-repeat;
+    background-size:cover;
   }
+
+  
   
   .more-button {
     position: absolute;
@@ -29,5 +35,6 @@
 
   body {
     background-color: black;
+    
   }
   

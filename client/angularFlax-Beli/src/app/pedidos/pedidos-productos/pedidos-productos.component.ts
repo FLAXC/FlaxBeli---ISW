@@ -5,6 +5,7 @@ import { CartService } from 'src/app/share/cart.service';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notificacion-service.service';
 import { ProductosDetailComponent } from 'src/app/productos/productos-detail/productos-detail.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedidos-productos',
@@ -17,6 +18,7 @@ export class PedidosProductosComponent implements OnInit {
   constructor(
     private gSevice: GenericService,
     private dialog:MatDialog,
+    private router: Router,
     private cartService:CartService,
     private notificacion:NotificacionService
   ) { 
@@ -25,7 +27,7 @@ export class PedidosProductosComponent implements OnInit {
 
   listaProductos() {
     this.gSevice
-      .list('producto/')
+      .list('restaurante/')
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any) => {
         console.log(data);
@@ -33,31 +35,42 @@ export class PedidosProductosComponent implements OnInit {
       });
   }
 
-  detalleProducto(id:number){
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.disableClose=false;
-    dialogConfig.data={
-      id:id
-    };
-    this.dialog.open(ProductosDetailComponent ,dialogConfig);
-  }
 
 
-  comprar(id:number){
-    this.gSevice
-    .get('producto',id)
-    .pipe(takeUntil(this.destroy$))
-    .subscribe((data:any)=>{
-      //Agregar producto obtenido del API al carrito
-      this.cartService.addToCart(data);
-      //Notificar al usuario
-      this.notificacion.mensaje(
-        'Orden',
-        'Producto: '+data.nombre+' agregado a la orden',
-        TipoMessage.success
-      );
-    });
+  crearComandaCliente(idMesa: number) {
+    this.cartService.idMesa = idMesa;
+    this.cartService.refrescarCarrito();
+    this.router.navigate(['pedidos/orden']);
   }
+
+  productos(idResta:number){
+    this.router.navigate(['pedidos/orden',idResta]);
+  }
+
+  // detalleProducto(id:number){
+  //   const dialogConfig=new MatDialogConfig();
+  //   dialogConfig.disableClose=false;
+  //   dialogConfig.data={
+  //     id:id
+  //   };
+  //   this.dialog.open(ProductosDetailComponent ,dialogConfig);
+  // }
+
+  // comprar(id:number){
+  //   this.gSevice
+  //   .get('producto',id)
+  //   .pipe(takeUntil(this.destroy$))
+  //   .subscribe((data:any)=>{
+  //     //Agregar producto obtenido del API al carrito
+  //     this.cartService.addToCart(data);
+  //     //Notificar al usuario
+  //     this.notificacion.mensaje(
+  //       'Orden',
+  //       'Producto: '+data.nombre+' agregado a la orden',
+  //       TipoMessage.success
+  //     );
+  //   });
+  // }
 
 
   ngOnInit(): void {
