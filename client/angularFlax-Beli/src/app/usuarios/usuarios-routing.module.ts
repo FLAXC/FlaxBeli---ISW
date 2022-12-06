@@ -6,10 +6,10 @@ import { UsuariosFormComponent } from './usuarios-form/usuarios-form.component';
 
 const routes: Routes = [
   {path:'usuarios/all', component: UsuariosAllComponent,  canActivate:[AuthGuard], data:{
-    roles:['Administrador','Empleado']
+    roles:['Administrador']
   }},
   {path:'usuarios/create', component: UsuariosFormComponent,  canActivate:[AuthGuard], data:{
-    roles:['Administrador','Empleado']
+    roles:['Administrador']
   }},
   {path:'usuarios/update/:id', component: UsuariosFormComponent,  canActivate:[AuthGuard], data:{
     roles:['Administrador']
