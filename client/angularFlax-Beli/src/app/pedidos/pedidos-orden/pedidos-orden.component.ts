@@ -24,7 +24,7 @@ export class PedidosOrdenComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   //Tabla
   displayedColumns: string[] = ['producto', 'precio', 'cantidad','notas', 'subtotal','acciones'];
-  displayedColumnsProducts: string[] = ['nombre', 'descripcion','precio',"accionesCompra",'acciones'];
+  displayedColumnsProducts: string[] = ['nombre', 'descripcion','categoria','precio',"accionesCompra",'acciones'];
   dataSource = new MatTableDataSource<any>();
   dataSourceProducts = new MatTableDataSource<any>();
   datosDialog: any;
@@ -64,6 +64,12 @@ export class PedidosOrdenComponent implements OnInit {
         this.dataSourceProducts.paginator = this.paginator;
       });
   }
+
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.dataSourceProducts.filter = filtro.trim().toLowerCase();
+  }  
+
 
   detalleProducto(id:number){
     const dialogConfig=new MatDialogConfig();
