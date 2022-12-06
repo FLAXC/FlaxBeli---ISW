@@ -33,8 +33,9 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     ProdutosModule,
     PedidosModule,
     UserModule, 
+    UsuariosModule,
     //Siempre de ultimo
-    AppRoutingModule, UsuariosModule,
+    AppRoutingModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, 
     useClass: HttpErrorInterceptorService, multi: true }, ],

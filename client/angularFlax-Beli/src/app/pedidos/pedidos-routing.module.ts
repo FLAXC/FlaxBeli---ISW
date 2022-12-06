@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../share/guards/auth.guard';
 import { PedidosAllComponent } from './pedidos-all/pedidos-all.component';
+import { PedidosClienteComponent } from './pedidos-cliente/pedidos-cliente.component';
 import { PedidosOrdenComponent } from './pedidos-orden/pedidos-orden.component';
 import { PedidosProductosComponent } from './pedidos-productos/pedidos-productos.component';
 
@@ -14,8 +15,12 @@ const routes: Routes = [
   {path:'pedidos/orden', component: PedidosOrdenComponent,  canActivate:[AuthGuard], data:{
     roles:['Administrador','Empleado','Cliente']
   }},
+  {path:'pedidos/cliente/:id', component: PedidosClienteComponent,  canActivate:[AuthGuard], data:{
+    roles:['Administrador','Empleado','Cliente']
+  }},
   {path:'pedidos/productos', component: PedidosProductosComponent},
   {path:'pedidos/orden/:id', component: PedidosOrdenComponent},
+  
 
 ];
 

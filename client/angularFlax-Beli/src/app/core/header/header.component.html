@@ -3,7 +3,7 @@
     <p class="titulo">FlaxBeli</p>
   </div>
 
-  <div *ngIf="isAutenticated || isCliente">
+  <div *ngIf="isAutenticated">
     <button
     class="buttonMenu"
     mat-button
@@ -13,7 +13,7 @@
   >
     Inicio
   </button>
-  <button *ngIf="!isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="aboveMenu">
+  <button  *ngIf="isAutenticated && currentUser.user.role !='Cliente'" class="buttonMenu" mat-button [matMenuTriggerFor]="aboveMenu">
     Mesas
   </button>
   <mat-menu #aboveMenu="matMenu" yPosition="above" overlapTrigger="false">
@@ -26,7 +26,7 @@
     >
       Mesas por Restaurante
     </button>
-    <button
+    <button  *ngIf="isAutenticated && currentUser.user.role !='Empleado'"
       class="buttonMenu"
       mat-menu-item
       [routerLink]="['/mesas/all']"
@@ -37,11 +37,11 @@
     </button>
   </mat-menu>
 
-  <button *ngIf="!isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="productos">
+  <button *ngIf="isAutenticated && currentUser.user.role !='Cliente'"  class="buttonMenu" mat-button [matMenuTriggerFor]="productos">
     Productos
   </button>
   <mat-menu #productos="matMenu" yPosition="above" overlapTrigger="false">
-    <button
+    <button *ngIf="isAutenticated && currentUser.user.role !='Empleado'"
       class="buttonMenu"
       mat-menu-item
       [routerLink]="['/productos/all']"
@@ -52,11 +52,11 @@
     </button>
   </mat-menu>
 
-  <button *ngIf="!isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="pedido">
+  <button *ngIf="isAutenticated && currentUser.user.role !='Cliente'"  class="buttonMenu" mat-button [matMenuTriggerFor]="pedido">
     Pedidos
   </button>
   <mat-menu #pedido="matMenu" yPosition="above" overlapTrigger="false">
-    <button
+    <button 
       class="buttonMenu"
       mat-menu-item
       [routerLink]="['/pedidos/all']"
@@ -64,25 +64,14 @@
       [routerLinkActiveOptions]="{ exact: false }"
     >
       Listado de pedidos
-    </button>
-    <!-- <button
-      class="buttonMenu"
-      mat-menu-item
-      [routerLink]="['/pedidos/productos']"
-      routerLinkActive="is-active"
-      [routerLinkActiveOptions]="{ exact: false }"
-    >
-      Ordenar
-    </button> -->
-
-    
+    </button>   
   </mat-menu>
 
-  <button *ngIf="!isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="usuarios">
+  <button *ngIf="isAutenticated && currentUser.user.role !='Cliente'"  class="buttonMenu" mat-button [matMenuTriggerFor]="usuarios">
     Usuarios
   </button>
   <mat-menu #usuarios ="matMenu" yPosition="above" overlapTrigger="false">
-    <button
+    <button *ngIf="isAutenticated && currentUser.user.role !='Empleado'"
       class="buttonMenu"
       mat-menu-item
       [routerLink]="['/usuarios/all']"
@@ -93,7 +82,7 @@
     </button>
   </mat-menu>
 
-  <button *ngIf="isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="usuariosPedir">
+  <button *ngIf="isAutenticated && currentUser.user.role !='Empleado'" class="buttonMenu" mat-button [matMenuTriggerFor]="usuariosPedir">
     Pedido Online
   </button>
   <mat-menu #usuariosPedir ="matMenu" yPosition="above" overlapTrigger="false">
@@ -108,7 +97,7 @@
     </button>
   </mat-menu>
 
-  <button
+  <button *ngIf="isAutenticated"
     class="buttonMenu"
     mat-button
     mat-button
