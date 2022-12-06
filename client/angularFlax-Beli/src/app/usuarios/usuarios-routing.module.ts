@@ -12,7 +12,7 @@ const routes: Routes = [
     roles:['Administrador','Empleado']
   }},
   {path:'usuarios/update/:id', component: UsuariosFormComponent,  canActivate:[AuthGuard], data:{
-    roles:['Administrador','Empleado']
+    roles:['Administrador']
   }},
 
 ];
