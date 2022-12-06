@@ -1,3 +1,4 @@
+import { ResourceLoader } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -68,8 +69,11 @@ export class UserLoginComponent implements OnInit {
     }
     this.authService.loginUser(this.formulario.value)
     .subscribe((respuesta:any)=>{
-     this.router.navigate(['/']);
+    this.router.navigate(['home']);
+    location.reload();
+     
     })
+   
    }
    public errorHandling = (control: string, error: string) => {
     return (

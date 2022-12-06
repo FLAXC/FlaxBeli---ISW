@@ -93,9 +93,20 @@
     </button>
   </mat-menu>
 
-  <button *ngIf="isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="usuarios">
+  <button *ngIf="isCliente" class="buttonMenu" mat-button [matMenuTriggerFor]="usuariosPedir">
     Pedido Online
   </button>
+  <mat-menu #usuariosPedir ="matMenu" yPosition="above" overlapTrigger="false">
+    <button
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['/pedidos/productos']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Elegir Restaurante
+    </button>
+  </mat-menu>
 
   <button
     class="buttonMenu"
