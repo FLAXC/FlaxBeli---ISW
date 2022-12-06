@@ -7,6 +7,17 @@
           </mat-card-header>
           <mat-card-content> <br>
             <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput type="text" placeholder="Nombre" formControlName="nombre" />
+                 <mat-error *ngIf="errorHandling('nombre', 'required')">
+                    Email es <strong>requerido</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
                 <div class="col">
                   <mat-form-field class="full-width">
                     <mat-label>Email</mat-label>
