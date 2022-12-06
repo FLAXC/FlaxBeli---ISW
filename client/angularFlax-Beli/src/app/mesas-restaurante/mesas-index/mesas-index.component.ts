@@ -42,20 +42,4 @@ export class MesasIndexComponent {
     productos(idResta:number){
       this.router.navigate(['pedidos/orden',idResta]);
     }
-
-    // comprar(id:number){
-    //   this.gSevice
-    //   .get('producto',id)
-    //   .pipe(takeUntil(this.destroy$))
-    //   .subscribe((data:any)=>{
-    //     //Agregar producto obtenido del API al carrito
-    //     this.cartService.addToCart(data);
-    //     //Notificar al usuario
-    //     this.notificacion.mensaje(
-    //       'Orden',
-    //       'Producto: '+data.nombre+' agregado a la orden',
-    //       TipoMessage.success
-    //     );
-    //   });
-    // }
 }
