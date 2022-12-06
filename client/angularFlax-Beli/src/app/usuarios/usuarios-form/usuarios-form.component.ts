@@ -36,7 +36,7 @@ export class UsuariosFormComponent implements OnInit {
                 this.titleForm="Actualizar";
                  this.gService.get('usuario',this.idUsuario).pipe(takeUntil(this.destroy$))
                  .subscribe((data:any)=>{
-                  this.usuarioForm=data;
+                  this.usuarioInfo=data;
                   this.usuarioForm.setValue({
                     id:this.usuarioInfo.id,
                     email:this.usuarioInfo.email,
@@ -59,7 +59,7 @@ export class UsuariosFormComponent implements OnInit {
           email:[null,null],
           nombre:[null, Validators.required],
           password:[null, Validators.required],
-          role: ['Administrador', Validators.required],
+          role: [null, Validators.required],
           restauranteId:[null, Validators.required]
         });
         //, Validators.pattern(/^[1-9]\d{6,10}$/)

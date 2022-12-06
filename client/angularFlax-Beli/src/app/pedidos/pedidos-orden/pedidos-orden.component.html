@@ -121,7 +121,8 @@
               <mat-cell *matCellDef="let element" style="padding-right: 30px;"> 
                 <mat-form-field appearance="fill" style="padding-right: 10px;">
                     <input matInput id="notas" type="text" class="form-control mb-2" 
-                    [(ngModel)]="element.notas"> 
+                    [(ngModel)]="element.notas"
+                    (change)="obtenerNotas(element)"> 
                 </mat-form-field> 
                 
             </mat-cell>

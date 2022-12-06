@@ -3,18 +3,18 @@ import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/d
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { CartService, ItemCart  } from 'src/app/share/cart.service';
 import { GenericService } from 'src/app/share/generic.service';
 import { NotificacionService, TipoMessage } from 'src/app/share/notificacion-service.service';
 import { ProductosDetailComponent } from 'src/app/productos/productos-detail/productos-detail.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { CartUsuarioService } from 'src/app/share/cart-usuario.service';
 @Component({
-  selector: 'app-pedidos-orden',
-  templateUrl: './pedidos-orden.component.html',
-  styleUrls: ['./pedidos-orden.component.css']
+  selector: 'app-pedidos-cliente',
+  templateUrl: './pedidos-cliente.component.html',
+  styleUrls: ['./pedidos-cliente.component.css']
 })
-export class PedidosOrdenComponent implements OnInit {
+export class PedidosClienteComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   total = 0;
@@ -24,13 +24,13 @@ export class PedidosOrdenComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   //Tabla
   displayedColumns: string[] = ['producto', 'precio', 'cantidad','notas', 'subtotal','acciones'];
-  displayedColumnsProducts: string[] = ['nombre', 'descripcion','categoria','precio',"accionesCompra",'acciones'];
+  displayedColumnsProducts: string[] = ['nombre', 'descripcion','precio',"accionesCompra",'acciones'];
   dataSource = new MatTableDataSource<any>();
   dataSourceProducts = new MatTableDataSource<any>();
   datosDialog: any;
   idResta:any;
   constructor(
-    private cartService: CartService,
+    private cartUsuarioService: CartUsuarioService,
     private noti: NotificacionService,
     private gService: GenericService,
     private router: Router,
@@ -44,15 +44,15 @@ export class PedidosOrdenComponent implements OnInit {
     this.activeRouter.params.subscribe((params:Params)=>{
       this.idResta=params['id'];
     });
-    this.cartService.currentDataCart$.subscribe(data=>{
+    this.cartUsuarioService.currentDataCart$.subscribe(data=>{
       this.dataSource=new MatTableDataSource(data);
     })
-    this.total=this.cartService.getTotal();
+    this.total=this.cartUsuarioService.getTotal();
     this.listaProductos(this.idResta); 
   }
 
   obtenerNotas(item: any) {
-    this.cartService.addToCart(item);
+    this.cartUsuarioService.addToCart(item);
     this.noti.mensaje('Pedido', 'Nota actualizada', TipoMessage.success);
   }
 
@@ -69,12 +69,6 @@ export class PedidosOrdenComponent implements OnInit {
       });
   }
 
-  filtrar(event: Event) {
-    const filtro = (event.target as HTMLInputElement).value;
-    this.dataSourceProducts.filter = filtro.trim().toLowerCase();
-  }  
-
-
   detalleProducto(id:number){
     const dialogConfig=new MatDialogConfig();
     dialogConfig.disableClose=false;
@@ -85,26 +79,26 @@ export class PedidosOrdenComponent implements OnInit {
   }
 
   actualizarCantidad(item: any) {
-    this.cartService.addToCart(item);
-    this.total=this.cartService.getTotal();
-    this.noti.mensaje('Orden',
+    this.cartUsuarioService.addToCart(item);
+    this.total=this.cartUsuarioService.getTotal();
+    this.noti.mensaje('Pedido',
     'Cantidad actualizada',
     TipoMessage.success);
   }
 
 
   eliminarItem(item: any) {
-    this.cartService.removeFromCart(item);
-    this.total=this.cartService.getTotal();
-    this.noti.mensaje('Orden',
+    this.cartUsuarioService.removeFromCart(item);
+    this.total=this.cartUsuarioService.getTotal();
+    this.noti.mensaje('Pedido',
     'Producto eliminado',
     TipoMessage.warning);
   }
 
   registrarOrden() {
-    if(this.cartService.getItems!=null){
+    if(this.cartUsuarioService.getItems!=null){
      //Obtener todo lo necesario para crear la orden
-     let itemsCarrito=this.cartService.getItems;
+     let itemsCarrito=this.cartUsuarioService.getItems;
      let detalles=itemsCarrito.map(
        x=>({
          ['pedidoId']: x.idItem,
@@ -118,20 +112,20 @@ export class PedidosOrdenComponent implements OnInit {
        
      }
      this.gService
-     .create('orden',infoOrden)
+     .create('pedido',infoOrden)
      .subscribe((respuesta:any)=>{
-         this.noti.mensaje('Orden',
-         'Orden registrada',
+         this.noti.mensaje('Pedido',
+         'Pedido registrada',
          TipoMessage.success);
-         this.cartService.deleteCart();
-         this.total=this.cartService.getTotal();
+         this.cartUsuarioService.deleteCart();
+         this.total=this.cartUsuarioService.getTotal();
          console.log(respuesta);
        });
      
  
     }else{
-     this.noti.mensaje('Orden',
-     'Agregue productos a la orden',
+     this.noti.mensaje('Pedido',
+     'Agregue productos a al pedido',
      TipoMessage.warning);
     }
    }
@@ -142,11 +136,11 @@ export class PedidosOrdenComponent implements OnInit {
     .pipe(takeUntil(this.destroy$))
     .subscribe((data:any)=>{
       //Agregar producto obtenido del API al carrito
-      this.cartService.addToCart(data);
+      this.cartUsuarioService.addToCart(data);
       //Notificar al usuario
       this.notificacion.mensaje(
-        'Orden',
-        'Producto: '+data.nombre+' agregado a la orden',
+        'Pedido',
+        'Producto: '+data.nombre+' agregado al pedido',
         TipoMessage.success
       );
     });

@@ -20,13 +20,16 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { PedidosClienteComponent } from './pedidos-cliente/pedidos-cliente.component';
 
 
 
 
 
 @NgModule({
-  declarations: [PedidosAllComponent, PedidosDetailComponent, PedidosOrdenComponent, PedidosProductosComponent,],
+  declarations: [PedidosAllComponent, PedidosDetailComponent, PedidosOrdenComponent, PedidosProductosComponent, PedidosClienteComponent],
   imports: [
     CommonModule,
     PedidosRoutingModule,
@@ -43,6 +46,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatInputModule,
     FormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
     ReactiveFormsModule
 
   ]

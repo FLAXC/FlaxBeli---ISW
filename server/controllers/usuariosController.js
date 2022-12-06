@@ -42,6 +42,8 @@ module.exports.create = async (request, response, next) => {
 module.exports.update = async (request, response, next) => {
     let usuario = request.body;
     let idUsuario = parseInt(request.params.id);
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(usuario.password, salt);
     //Obtener usuario viejo
     const usuarioViejo = await prisma.usuario.findUnique({
       where: { id: idUsuario },
@@ -54,9 +56,9 @@ module.exports.update = async (request, response, next) => {
       data: {
         email: usuario.email,
         nombre: usuario.nombre,
-        password: usuario.password,
+        password: hash,
         role: usuario.role,
-        restauranteId: usuario.RestauranteId
+        restauranteId: usuario.restauranteId
       },
     });
     response.json(newUsuario);

@@ -9,8 +9,9 @@ router.get("/",usuariosController.get);
 
 router.post("/",usuariosController.create);
 
+router.put("/:id",usuariosController.update);
+
 router.get("/:id",usuariosController.getById);
 
-router.put("/:id",usuariosController.update);
 
 module.exports=router;

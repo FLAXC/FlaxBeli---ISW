@@ -10,7 +10,7 @@
               <mat-label>Email</mat-label>
               <input matInput type="text" placeholder="Email usuario" formControlName="email" />
              <mat-error *ngIf="errorHandling('email', 'required')">
-                Email es <strong>requerido</strong>
+                Email del usuario es <strong>requerido</strong>
               </mat-error>
               <mat-error *ngIf="errorHandling('email','email')">
                 Verifique el <strong>formato</strong> del email

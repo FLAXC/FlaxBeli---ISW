@@ -69,9 +69,7 @@ export class UserLoginComponent implements OnInit {
     }
     this.authService.loginUser(this.formulario.value)
     .subscribe((respuesta:any)=>{
-    this.router.navigate(['home']);
-    location.reload();
-     
+    this.router.navigate(['/']);
     })
    
    }
