@@ -6,13 +6,13 @@ import { AuthGuard } from '../share/guards/auth.guard';
 
 const routes: Routes = [
   {path:'productos/all', component: ProductosAllComponent,  canActivate:[AuthGuard], data:{
-    roles:['Administrador','Empleado']
+    roles:['Administrador']
   }},
   {path:'productos/create',component: ProductoFormComponent,  canActivate:[AuthGuard], data:{
-    roles:['Administrador','Empleado']
+    roles:['Administrador']
   }},
   {path:'productos/update/:id',component: ProductoFormComponent,  canActivate:[AuthGuard], data:{
-    roles:['Administrador','Empleado']
+    roles:['Administrador']
   }}
 ];
 
