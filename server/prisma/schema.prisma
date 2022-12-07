@@ -14,12 +14,11 @@ model Usuario {
   id            Int         @id @default(autoincrement())
   email         String      @unique
   nombre        String
-  role          Role @default(Cliente)
+  role          Role        @default(Cliente)
   password      String
   restaurante   Restaurante @relation(fields: [restauranteId], references: [id])
   restauranteId Int
   ordenes       Pedido[]
-  facturas      Factura[]
 }
 
 // Mesero solo vera los productos y las mesas de restaurante y el cliente solo los productos
@@ -42,13 +41,13 @@ model Pedido {
   estado     EstadoComanda
   usuario    Usuario           @relation(fields: [usuarioId], references: [id])
   usuarioId  Int
-  notas      String
+  impuesto   Decimal           @db.Decimal(10, 2)
   subtotal   Decimal           @db.Decimal(10, 2)
-  factura    Factura           @relation(fields: [facturaId], references: [id])
-  facturaId  Int
+  total      Decimal           @db.Decimal(10, 2)
+  facturas   Factura[]
   productos  PedidoOnProduto[]
-  mesa       Mesa              @relation(fields: [mesaId], references: [id])
-  mesaId     Int
+  mesa       Mesa?              @relation(fields: [mesaId], references: [id])
+  mesaId     Int?
 }
 
 model PedidoOnProduto {
@@ -57,27 +56,10 @@ model PedidoOnProduto {
   producto   Producto @relation(fields: [productoId], references: [id])
   productoId Int
   cantidad   Int
-  
+  notas      String?
+  updatedAt DateTime @updatedAt @default(now())
   @@id([pedidoId, productoId])
 }
-
-// model ProductoOnRestaurante {
-//   producto      Producto    @relation(fields: [productoId], references: [id])
-//   productoId    Int
-//   restaurante   Restaurante @relation(fields: [restauranteId], references: [id])
-//   restauranteId Int
-
-//   @@id([restauranteId, productoId])
-// }
-
-// model MesaOnPedido {
-//   pedido   Pedido @relation(fields: [pedidoId], references: [id])
-//   pedidoId Int
-//   mesa     Mesa   @relation(fields: [mesaId], references: [id])
-//   mesaId   Int
-
-//   @@id([pedidoId, mesaId])
-// }
 
 enum Role {
   Cliente
@@ -120,7 +102,7 @@ enum EstadoComanda {
 enum Categoria {
   Desayunos
   Almuerzos
-  ComidasRapidas 
+  ComidasRapidas
 }
 
 enum TipoPago {
@@ -139,12 +121,11 @@ model Restaurante {
 
 model Factura {
   id           Int      @id @default(autoincrement())
-  usuario      Usuario  @relation(fields: [usuarioId], references: [id])
-  usuarioId    Int
   fechaFactura DateTime @default(now())
   impuesto     Decimal  @db.Decimal(10, 2)
   total        Decimal  @db.Decimal(10, 2)
-  pedidos      Pedido[]
+  pedido       Pedido   @relation(fields: [pedidoId], references: [id])
+  pedidoId     Int
   pagos        Pago[]
 }
 

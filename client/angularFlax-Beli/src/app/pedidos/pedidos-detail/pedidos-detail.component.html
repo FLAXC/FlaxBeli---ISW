@@ -1,4 +1,5 @@
-<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+
+  <button mat-icon-button class="close-button" [mat-dialog-close]="true">
     <mat-icon class="close-icon" color="primary">close</mat-icon>
   </button>
   <div *ngIf="datos" class="template">
@@ -13,15 +14,12 @@
     <li *ngFor="let item of datos.productos">{{item.producto.nombre}}</li>
     </ol>
     <p><strong>--------------------------------------------------------------</strong></p>
-    <p><strong>Notas:</strong> {{datos.notas}}</p>
-    <p><strong>Subtotal:</strong> {{datos.subtotal}}</p>
-
-    
-     
-  </mat-dialog-content>
+    <p><strong>Subtotal:</strong> {{datos.subtotal}}</p>  
   
-  <mat-dialog-actions>
-   
-  </mat-dialog-actions>
+  </mat-dialog-content>
+
   </div>
+
+
+
   

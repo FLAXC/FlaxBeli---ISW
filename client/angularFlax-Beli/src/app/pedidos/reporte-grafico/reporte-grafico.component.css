@@ -1,0 +1,14 @@
+.chart{
+    display: block;
+    width: 400px;
+    height: 400px;
+    margin: 5px auto;
+}
+body{
+    background-color: black;
+    text-align: center;
+}
+.shipping-card {
+    min-width: 120px;
+
+  }
