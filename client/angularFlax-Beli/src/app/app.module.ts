@@ -15,7 +15,7 @@ import { PedidosModule } from './pedidos/pedidos.module';
 import { UserModule } from './user/user.module';
 
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
-import { UsuariosModule } from './usuarios/usuarios.module';
+import { UsuariosModule } from './usuarios/usuarios.module'; 
 
 
 

@@ -1,7 +1,7 @@
 import { Categoria, Estado, EstadoComanda, EstadoMesa, PrismaClient } from '@prisma/client';
-import { facturas } from './seeds/facturas';
+// import { facturas } from './seeds/facturas';
 import { restaurantes } from './seeds/restaurantes';
-import { usuarios } from './seeds/usuarios';
+// import { usuarios } from './seeds/usuarios';
 const prisma = new PrismaClient();
 
 async function mail() {
@@ -10,13 +10,13 @@ async function mail() {
         data: restaurantes
     });
 
-    await prisma.usuario.createMany({
-        data: usuarios
-    });
+    // await prisma.usuario.createMany({
+    //     data: usuarios
+    // });
 
-    await prisma.factura.createMany({
-        data: facturas
-    });
+    // await prisma.factura.createMany({
+    //     data: facturas
+    // });
 
     await prisma.mesa.create({
         data: {
@@ -117,97 +117,97 @@ async function mail() {
     });
 
     //Productos
-    await prisma.producto.create({
-        data: {
-            nombre: 'Hamburguesa',
-            descripcion: 'Hamburguesa con papas',
-            ingredientes: 'Pan, tomate, torta de carne, lechuga, queso',
-            precio:2900,
-            estado: Estado.Habilitado,
-            categoria: Categoria.ComidasRapidas,
-            restaurantes:{
-                connect : [{id:2043}, {id:4043}]
-            }
-        }
-    });
+    // await prisma.producto.create({
+    //     data: {
+    //         nombre: 'Hamburguesa',
+    //         descripcion: 'Hamburguesa con papas',
+    //         ingredientes: 'Pan, tomate, torta de carne, lechuga, queso',
+    //         precio:2900,
+    //         estado: Estado.Habilitado,
+    //         categoria: Categoria.ComidasRapidas,
+    //         restaurantes:{
+    //             connect : [{id:2043}, {id:4043}]
+    //         }
+    //     }
+    // });
 
-    await prisma.producto.create({
-        data: {
-            nombre: 'Pizza',
-            descripcion: 'Pizza Tradicional',
-            ingredientes: 'Pasta de pizza, tomate, queso, peperoni, hongos, salsa para pizza',
-            precio:2900,
-            estado: Estado.Habilitado,
-            categoria: Categoria.ComidasRapidas,
-            restaurantes:{
-                connect : [{id:4043}]
-            }
-        }
-    });
+    // await prisma.producto.create({
+    //     data: {
+    //         nombre: 'Pizza',
+    //         descripcion: 'Pizza Tradicional',
+    //         ingredientes: 'Pasta de pizza, tomate, queso, peperoni, hongos, salsa para pizza',
+    //         precio:2900,
+    //         estado: Estado.Habilitado,
+    //         categoria: Categoria.ComidasRapidas,
+    //         restaurantes:{
+    //             connect : [{id:4043}]
+    //         }
+    //     }
+    // });
 
-    //
-    await prisma.pedido.create(
-        {
-            data: {
-                estado: EstadoComanda.Registrada,
-                notas: 'Sin queso',
-                usuarioId: 1,
-                facturaId: 1,
-                mesaId:2,
-                productos: {
-                    createMany:{
-                        data:[
-                            {cantidad:2, productoId:1},
-                            {cantidad:1, productoId:2}
-                        ]
-                    }
-                },
-                subtotal: 5500,
-            }
-        }
-    );
+    // //
+    // await prisma.pedido.create(
+    //     {
+    //         data: {
+    //             estado: EstadoComanda.Registrada,
+    //             notas: 'Sin queso',
+    //             usuarioId: 1,
+    //             facturaId: 1,
+    //             mesaId:2,
+    //             productos: {
+    //                 createMany:{
+    //                     data:[
+    //                         {cantidad:2, productoId:1},
+    //                         {cantidad:1, productoId:2}
+    //                     ]
+    //                 }
+    //             },
+    //             subtotal: 5500,
+    //         }
+    //     }
+    // );
 
-    await prisma.pedido.create(
-        {
-            data: {
-                estado: EstadoComanda.Pendientes,
-                notas: 'Sin tomate',
-                usuarioId: 1,
-                facturaId: 1,
-                mesaId:3,
-                productos: {
-                    createMany:{
-                        data:[
-                            {cantidad:2, productoId:1},
-                            {cantidad:1, productoId:2}
-                        ]
-                    }
-                },
-                subtotal: 5500,
-            }
-        }
-    );
+    // await prisma.pedido.create(
+    //     {
+    //         data: {
+    //             estado: EstadoComanda.Pendientes,
+    //             notas: 'Sin tomate',
+    //             usuarioId: 1,
+    //             facturaId: 1,
+    //             mesaId:3,
+    //             productos: {
+    //                 createMany:{
+    //                     data:[
+    //                         {cantidad:2, productoId:1},
+    //                         {cantidad:1, productoId:2}
+    //                     ]
+    //                 }
+    //             },
+    //             subtotal: 5500,
+    //         }
+    //     }
+    // );
 
-    await prisma.pedido.create(
-        {
-            data: {
-                estado: EstadoComanda.Registrada,
-                notas: 'sin lechuga',
-                usuarioId: 1,
-                facturaId: 1,
-                mesaId:3,
-                productos: {
-                    createMany:{
-                        data:[
-                            {cantidad:2, productoId:1},
-                            {cantidad:1, productoId:2}
-                        ]
-                    }
-                },
-                subtotal: 5500,
-            }
-        }
-    );
+    // await prisma.pedido.create(
+    //     {
+    //         data: {
+    //             estado: EstadoComanda.Registrada,
+    //             notas: 'sin lechuga',
+    //             usuarioId: 1,
+    //             facturaId: 1,
+    //             mesaId:3,
+    //             productos: {
+    //                 createMany:{
+    //                     data:[
+    //                         {cantidad:2, productoId:1},
+    //                         {cantidad:1, productoId:2}
+    //                     ]
+    //                 }
+    //             },
+    //             subtotal: 5500,
+    //         }
+    //     }
+    // );
 }
 mail()
 .then(async () => {

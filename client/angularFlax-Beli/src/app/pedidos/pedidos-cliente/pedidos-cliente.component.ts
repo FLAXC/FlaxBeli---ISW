@@ -9,6 +9,7 @@ import { ProductosDetailComponent } from 'src/app/productos/productos-detail/pro
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CartUsuarioService } from 'src/app/share/cart-usuario.service';
+import { AuthenticationService } from 'src/app/share/authentication.service';
 @Component({
   selector: 'app-pedidos-cliente',
   templateUrl: './pedidos-cliente.component.html',
@@ -24,12 +25,14 @@ export class PedidosClienteComponent implements OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   //Tabla
   displayedColumns: string[] = ['producto', 'precio', 'cantidad','notas', 'subtotal','acciones'];
-  displayedColumnsProducts: string[] = ['nombre', 'descripcion','precio',"accionesCompra",'acciones'];
+  displayedColumnsProducts: string[] = ['nombre', 'descripcion','categoria','precio',"accionesCompra",'acciones'];
   dataSource = new MatTableDataSource<any>();
   dataSourceProducts = new MatTableDataSource<any>();
   datosDialog: any;
   idResta:any;
+  currentUser:any;
   constructor(
+    private authService: AuthenticationService,
     private cartUsuarioService: CartUsuarioService,
     private noti: NotificacionService,
     private gService: GenericService,
@@ -69,6 +72,11 @@ export class PedidosClienteComponent implements OnInit {
       });
   }
 
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.dataSourceProducts.filter = filtro.trim().toLowerCase();
+  }  
+
   detalleProducto(id:number){
     const dialogConfig=new MatDialogConfig();
     dialogConfig.disableClose=false;
@@ -96,23 +104,30 @@ export class PedidosClienteComponent implements OnInit {
   }
 
   registrarOrden() {
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
     if(this.cartUsuarioService.getItems!=null){
      //Obtener todo lo necesario para crear la orden
      let itemsCarrito=this.cartUsuarioService.getItems;
      let detalles=itemsCarrito.map(
        x=>({
-         ['pedidoId']: x.idItem,
-         ['cantidad']: x.cantidad
+         ['productoId']: x.idItem,
+         ['cantidad']: x.cantidad,
+         ['notas']: x.notas
        })
      );
      //Datos para el API
      let infoOrden={
        'fechaOrden':new Date(this.fecha),
-       'productos':detalles
-       
+       'productos':detalles,
+       'impuesto' : (this.total = this.cartUsuarioService.getTotal() * 0.13),
+       'subtotal' : (this.total = this.cartUsuarioService.getTotal()),
+       'total' : (this.total = this.cartUsuarioService.getTotal() * 0.13) + (this.total = this.cartUsuarioService.getTotal()),
+       'mesaId' : null,
+       'usuarioId' : this.currentUser.user.id,
+       'estado' : 'Entregada'
      }
      this.gService
-     .create('pedido',infoOrden)
+     .create('pedido/pedidoCliente',infoOrden)
      .subscribe((respuesta:any)=>{
          this.noti.mensaje('Pedido',
          'Pedido registrada',
@@ -145,4 +160,6 @@ export class PedidosClienteComponent implements OnInit {
       );
     });
   }
+
+  
 }

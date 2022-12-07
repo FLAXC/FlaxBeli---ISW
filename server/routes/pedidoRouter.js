@@ -9,7 +9,13 @@ router.get("/", pedidoController.get);
 
 router.post("/", pedidoController.create); 
 
+router.post("/pedidoCliente", pedidoController.createPedidoCliente); 
+
+router.get("/vProductoTop/:mes",pedidoController.getVentaProductoTop);
+
 router.get("/:id",pedidoController.getById);
+
+router.get("/vProducto/:mes", pedidoController.getVentaProductoMes);
 
 
 
