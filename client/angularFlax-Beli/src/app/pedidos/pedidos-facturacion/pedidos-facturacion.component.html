@@ -1,0 +1,105 @@
+<body>
+  <form [formGroup]="facturaForm" novalidate>
+      <input type="hidden" formControlName="id" />
+      <mat-card class="shipping-card">
+        <mat-card-header>
+          <mat-card-title>Proceso de pago</mat-card-title>
+        </mat-card-header>
+
+        <h4>Subtotal {{subtotal}}</h4>
+
+        <h4>Impuesto {{impuesto}}</h4>
+  
+        <h4>Total {{total}}</h4>
+  
+
+
+        <div class="row">
+          <div class="col">
+            <mat-label>Tipo de pago</mat-label>
+            <mat-radio-group formControlName="tipoPago">
+              <mat-radio-button value="Tarjeta">Tarjeta</mat-radio-button>
+              <mat-radio-button value="Efectivo">Efectivo</mat-radio-button>
+              <mat-radio-button value="Ambas">Ambas</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+
+
+        <mat-card-content *ngIf="facturaForm.controls['tipoPago'].value != null">
+
+          <div class="row" *ngIf="facturaForm.controls['tipoPago'].value == 'Tarjeta' || facturaForm.controls['tipoPago'].value == 'Ambas'">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input maxlength="16" minlength="16" matInput  class="form-control mb-2" placeholder="Número de tarjeta" formControlName="numeroTarjeta" > 
+                  <mat-error *ngIf="facturaForm.controls['numeroTarjeta'].hasError('minlength')">
+                    El número tarjeta no cumple los <strong>requisitos</strong>
+                  </mat-error>
+                  <mat-error *ngIf="facturaForm.controls['numeroTarjeta'].hasError('maxlength')">
+                      El código tarjeta no cumple los <strong>requisitos</strong>
+                    </mat-error>
+                  <mat-error *ngIf="facturaForm.controls['numeroTarjeta'].hasError('required')">
+                  El número de tarjeta es <strong>requerido</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="facturaForm.controls['tipoPago'].value == 'Tarjeta' || facturaForm.controls['tipoPago'].value == 'Ambas'">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input maxlength="3" minlength="3" matInput  class="form-control mb-2" placeholder="Código Tarjeta" formControlName="codigoTarjeta"> 
+                  <mat-error *ngIf="facturaForm.controls['codigoTarjeta'].hasError('minlength')">
+                    El número tarjeta no cumple los <strong>requisitos</strong>
+                  </mat-error>
+                  <mat-error *ngIf="facturaForm.controls['codigoTarjeta'].hasError('maxlength')">
+                      El código tarjeta no cumple los <strong>requisitos</strong>
+                    </mat-error>
+                  <mat-error *ngIf="facturaForm.controls['codigoTarjeta'].hasError('required')"> 
+                    El código tarjeta no cumple los  es <strong>requerido</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="facturaForm.controls['tipoPago'].value == 'Efectivo' || facturaForm.controls['tipoPago'].value == 'Ambas'">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Monto Efectivo" formControlName="monto">
+                  <mat-error *ngIf="facturaForm.controls['monto'].hasError('required')">
+                    Monto es <strong>requerida</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="facturaForm.controls['tipoPago'].value == 'Ambas'">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input value={{calcularPagoAmbas()}} readonly="readonly" matInput placeholder="Monto a pagar con tarjeta" formControlName="montoTarjetaAmbas">
+                  <mat-error *ngIf="facturaForm.controls['montoTarjetaAmbas'].hasError('required')">
+                    Monto Tarjeta es <strong>requerida</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="facturaForm.controls['tipoPago'].value == 'Efectivo' || facturaForm.controls['tipoPago'].value == 'Ambas'">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input  value={{calcularCambio()}} readonly="readonly" matInput placeholder="Cambio" formControlName="cambio">
+                  <mat-error *ngIf="facturaForm.controls['cambio'].hasError('required')">
+                    Cambio es <strong>requerida</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" style="background-color:#E1AD3B ;" (click)="validacionesPedido()">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </body>
+  

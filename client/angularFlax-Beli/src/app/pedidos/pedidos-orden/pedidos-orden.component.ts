@@ -9,6 +9,7 @@ import { NotificacionService, TipoMessage } from 'src/app/share/notificacion-ser
 import { ProductosDetailComponent } from 'src/app/productos/productos-detail/productos-detail.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { AuthenticationService } from 'src/app/share/authentication.service';
 @Component({
   selector: 'app-pedidos-orden',
   templateUrl: './pedidos-orden.component.html',
@@ -29,14 +30,16 @@ export class PedidosOrdenComponent implements OnInit {
   dataSourceProducts = new MatTableDataSource<any>();
   datosDialog: any;
   idResta:any;
+  currentUser: any;
   constructor(
+    private authService: AuthenticationService,
     private cartService: CartService,
     private noti: NotificacionService,
     private gService: GenericService,
     private router: Router,
     private dialog:MatDialog,
     private notificacion:NotificacionService,
-    private activeRouter: ActivatedRoute,
+    private activeRouter: ActivatedRoute, 
     ){
      }
 
@@ -102,38 +105,46 @@ export class PedidosOrdenComponent implements OnInit {
   }
 
   registrarOrden() {
-    if(this.cartService.getItems!=null){
-     //Obtener todo lo necesario para crear la orden
-     let itemsCarrito=this.cartService.getItems;
-     let detalles=itemsCarrito.map(
-       x=>({
-         ['pedidoId']: x.idItem,
-         ['cantidad']: x.cantidad
-       })
-     );
-     //Datos para el API
-     let infoOrden={
-       'fechaOrden':new Date(this.fecha),
-       'productos':detalles
-       
-     }
-     this.gService
-     .create('orden',infoOrden)
-     .subscribe((respuesta:any)=>{
-         this.noti.mensaje('Orden',
-         'Orden registrada',
-         TipoMessage.success);
-         this.cartService.deleteCart();
-         this.total=this.cartService.getTotal();
-         console.log(respuesta);
-       });
+    this.router.navigate(['/pedidos/facturacion']);
+    // this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+    // if(this.cartService.getItems!=null){
+    //  //Obtener todo lo necesario para crear la orden
+    //  let itemsCarrito=this.cartService.getItems;
+    //  let detalles=itemsCarrito.map(
+    //    x=>({
+    //      ['productoId']: x.idItem,
+    //      ['cantidad']: x.cantidad,
+    //      ['notas']: x.notas
+    //    })
+    //  );
+    //  //Datos para el API
+    //  let infoOrden={
+    //    'fechaOrden':new Date(this.fecha),
+    //    'productos':detalles,
+    //    'impuesto' : (this.total = this.cartService.getTotal() * 0.13),
+    //    'subtotal' : (this.total = this.cartService.getTotal()),
+    //    'total' : (this.total = this.cartService.getTotal() * 0.13) + (this.total = this.cartService.getTotal()),
+    //    'mesaId' : this.cartService.idMesa,
+    //    'usuarioId' : this.currentUser.user.id,
+    //    'estado' : 'Entregada'
+    //  }
+    //  this.gService
+    //  .create('pedido',infoOrden)
+    //  .subscribe((respuesta:any)=>{
+    //      this.noti.mensaje('Orden',
+    //      'Orden registrada',
+    //      TipoMessage.success);
+    //      this.cartService.deleteCart();
+    //      this.total=this.cartService.getTotal();
+    //      console.log(respuesta);
+    //    });
      
  
-    }else{
-     this.noti.mensaje('Orden',
-     'Agregue productos a la orden',
-     TipoMessage.warning);
-    }
+    // }else{
+    //  this.noti.mensaje('Orden',
+    //  'Agregue productos a la orden',
+    //  TipoMessage.warning);
+    // }
    }
 
    comprar(id:number){

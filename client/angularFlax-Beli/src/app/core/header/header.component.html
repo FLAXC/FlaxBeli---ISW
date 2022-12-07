@@ -97,6 +97,31 @@
     </button>
   </mat-menu>
 
+  <button  *ngIf="isAutenticated && currentUser.user.role !='Cliente'" class="buttonMenu" mat-button [matMenuTriggerFor]="resta">
+    Reportes
+  </button>
+  <mat-menu #resta="matMenu" yPosition="above" overlapTrigger="false">
+    <button 
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['/pedido/rGrafico']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Ventas por fecha
+    </button>
+    <button  *ngIf="isAutenticated && currentUser.user.role !='Empleado'"
+      class="buttonMenu"
+      mat-menu-item
+      [routerLink]="['pedido/rPDF']"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+    Ventas por pago
+    </button>
+  </mat-menu>
+   
+
   <button *ngIf="isAutenticated"
     class="buttonMenu"
     mat-button

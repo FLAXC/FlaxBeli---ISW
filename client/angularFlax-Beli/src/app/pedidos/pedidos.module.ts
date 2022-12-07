@@ -23,13 +23,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { PedidosClienteComponent } from './pedidos-cliente/pedidos-cliente.component';
-
-
+import { PedidosFacturacionComponent } from './pedidos-facturacion/pedidos-facturacion.component';
+import { ReportePdfComponent } from './reporte-pdf/reporte-pdf.component';
+import { ReporteGraficoComponent } from './reporte-grafico/reporte-grafico.component';
+import { PedidosFacturaClienteComponent } from './pedidos-factura-cliente/pedidos-factura-cliente.component'; 
+import { MatOptionModule } from '@angular/material/core';
 
 
 
 @NgModule({
-  declarations: [PedidosAllComponent, PedidosDetailComponent, PedidosOrdenComponent, PedidosProductosComponent, PedidosClienteComponent],
+  declarations: [PedidosAllComponent, PedidosDetailComponent, PedidosOrdenComponent, PedidosProductosComponent, PedidosClienteComponent, PedidosFacturacionComponent, ReportePdfComponent, ReporteGraficoComponent, PedidosFacturaClienteComponent],
   imports: [
     CommonModule,
     PedidosRoutingModule,
@@ -49,6 +52,7 @@ import { PedidosClienteComponent } from './pedidos-cliente/pedidos-cliente.compo
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatOptionModule ,
     ReactiveFormsModule
 
   ]

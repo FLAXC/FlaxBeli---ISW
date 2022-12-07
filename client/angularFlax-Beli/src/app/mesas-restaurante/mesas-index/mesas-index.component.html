@@ -2,7 +2,7 @@
   <h1>Restaurante Flax-Beli #1</h1>
     <mat-grid-list  [cols]="3" rowHeight="12em" gutterSize="10px"  *ngIf="datos">
       <ng-container class="container" *ngFor="let item of datos"> 
-      <mat-grid-tile *ngIf="item.restauranteId==2043">
+      <mat-grid-tile *ngIf="currentUser.user.role !='Empleado'  && item.restauranteId==2043 || currentUser.user.restauranteId==2043  && item.restauranteId==2043">
         <mat-card class="dashboard-card">
           
           <mat-card-header  *ngIf="item.estadoMesa == 'Ocupada'" style="color:red;">
@@ -70,7 +70,7 @@
     <h1>Restaurante Flax-Beli #2</h1>
     <mat-grid-list  [cols]="3" rowHeight="12em" gutterSize="10px"  *ngIf="datos">
       <ng-container class="container" *ngFor="let item of datos"> 
-      <mat-grid-tile *ngIf="item.restauranteId==1043">
+      <mat-grid-tile *ngIf="currentUser.user.role !='Empleado'  && item.restauranteId==1043 || currentUser.user.restauranteId==1043  && item.restauranteId==1043">
         <mat-card class="dashboard-card">
 
           <mat-card-header *ngIf="item.estadoMesa == 'Ocupada'" style="color:red;">
@@ -137,7 +137,7 @@
 <h1>Restaurante Flax-Beli #3</h1>
     <mat-grid-list  [cols]="3" rowHeight="12em" gutterSize="10px"  *ngIf="datos">
       <ng-container class="container" *ngFor="let item of datos"> 
-      <mat-grid-tile *ngIf="item.restauranteId==4043">
+      <mat-grid-tile *ngIf="currentUser.user.role !='Empleado'  && item.restauranteId==4043 || currentUser.user.restauranteId==2043  && item.restauranteId==4043">
         <mat-card class="dashboard-card">
           <mat-card-header *ngIf="item.estadoMesa == 'Ocupada'" style="color:red;">
             <mat-card-title>
