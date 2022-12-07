@@ -1,22 +1,25 @@
 <body>
-  <form [formGroup]="facturaForm" novalidate>
+  <form [formGroup]="facturaForm" novalidate style="text-align: center;">
       <input type="hidden" formControlName="id" />
       <mat-card class="shipping-card">
         <mat-card-header>
-          <mat-card-title>Proceso de pago</mat-card-title>
+          <mat-card-title></mat-card-title>
         </mat-card-header>
+        <h1>Proceso de pago</h1>
+        ------------------------------------------------------------------------------------
 
-        <h4>Subtotal {{subtotal}}</h4>
-
-        <h4>Impuesto {{impuesto}}</h4>
+        <h4>Subtotal:</h4>
+        <input style="text-align: center;" type="text" readonly="readonly" value="₡{{subtotal}}">
+        <h4>Impuesto:</h4>
+        <input style="text-align: center;" type="text" readonly="readonly" value="₡{{impuesto}}">
   
-        <h4>Total {{total}}</h4>
-  
-
-
+        <h4>Total:</h4>
+        <input style="text-align: center;" type="text" readonly="readonly" value="₡{{total}}">
+        <br>
+------------------------------------------------------------------------------------
         <div class="row">
           <div class="col">
-            <mat-label>Tipo de pago</mat-label>
+            <h1>Tipo de pago</h1>
             <mat-radio-group formControlName="tipoPago">
               <mat-radio-button value="Tarjeta">Tarjeta</mat-radio-button>
               <mat-radio-button value="Efectivo">Efectivo</mat-radio-button>
@@ -24,7 +27,6 @@
             </mat-radio-group>
           </div>
         </div>
-
 
         <mat-card-content *ngIf="facturaForm.controls['tipoPago'].value != null">
 
@@ -97,7 +99,7 @@
 
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="primary" type="submit" style="background-color:#E1AD3B ;" (click)="validacionesPedido()">Guardar</button>
+          <button mat-raised-button color="primary" type="submit" style="background-color:yellow ; color: black;" (click)="validacionesPedido()">Guardar</button>
         </mat-card-actions>
       </mat-card>
     </form>

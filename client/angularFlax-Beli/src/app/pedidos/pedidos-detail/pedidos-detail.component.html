@@ -11,7 +11,7 @@
     <p *ngIf="datos.mesa"><strong>Mesa:</strong> {{datos.mesa.codigoMesa}}</p>
     <p><strong>--------------------------------------------------------------</strong></p>
     <ol *ngIf="datos.productos">
-    <li *ngFor="let item of datos.productos">{{item.producto.nombre}}</li>
+    <li *ngFor="let item of datos.productos">{{item.producto.nombre}} {{item.producto.categoria}}</li>
     </ol>
     <p><strong>--------------------------------------------------------------</strong></p>
     <p><strong>Subtotal:</strong> {{datos.subtotal}}</p>  

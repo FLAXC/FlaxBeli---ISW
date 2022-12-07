@@ -3,8 +3,12 @@ body{
   }
 
   .full-width {
-    width: 50%;
+    width: 50%; 
+  }
 
+  h4{
+    color: yellow;
+    font-size: 20px;
   }
   
   .shipping-card {
@@ -12,8 +16,9 @@ body{
   }
   
   .mat-radio-button {
-    display: block;
     margin: 5px 0;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
   .row {

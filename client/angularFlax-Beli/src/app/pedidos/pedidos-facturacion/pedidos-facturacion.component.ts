@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/share/authentication.service';
@@ -10,6 +10,7 @@ import {
   NotificacionService,
   TipoMessage,
 } from 'src/app/share/notificacion-service.service';
+import { PedidosDetailComponent } from '../pedidos-detail/pedidos-detail.component';
 
 @Component({
   selector: 'app-pedidos-facturacion',
@@ -32,7 +33,9 @@ export class PedidosFacturacionComponent implements OnInit {
     private authService: AuthenticationService,
     private cartService: CartService,
     private noti: NotificacionService,
-    private gService: GenericService
+    private gService: GenericService,
+    private dialog:MatDialog,
+    private router: Router,
   ) {
     this.formularioReactive();
   }
@@ -82,11 +85,13 @@ export class PedidosFacturacionComponent implements OnInit {
         this.noti.mensaje('Pedido', 'Pedido registrada', TipoMessage.success);
         this.cartService.deleteCart();
         this.total = this.cartService.getTotal();
+        this.detallePedido(respuesta.id);
+        this.router.navigate(['/mesas-restaurante']);
         console.log(respuesta);
       });
     } else {
       this.noti.mensaje(
-        'Orden',
+        'Pedido',
         'Agregue productos a la orden',
         TipoMessage.warning
       );
@@ -100,12 +105,12 @@ export class PedidosFacturacionComponent implements OnInit {
           this.registrarOrden();
           return;
         } else {
-          this.noti.mensaje('orden', 'El monto es menor', TipoMessage.warning);
+          this.noti.mensaje('Pedido', 'El monto es menor', TipoMessage.warning);
           return;
         }
       }
       this.noti.mensaje(
-        'orden',
+        'Pedido',
         'La tarjeta o el código no cumplen los requisitos',
         TipoMessage.warning
       );
@@ -113,7 +118,7 @@ export class PedidosFacturacionComponent implements OnInit {
       if (this.facturaForm.value.tipoPago == 'Tarjeta') {
         this.registrarOrden();
         this.noti.mensaje(
-          'orden',
+          'Pedido',
           'Cumple todos los requisitos',
           TipoMessage.success
         );
@@ -123,7 +128,7 @@ export class PedidosFacturacionComponent implements OnInit {
           this.registrarOrden();
         } else {
           this.noti.mensaje(
-            'orden',
+            'Pedido',
             'El monto debe ser mayor a cero',
             TipoMessage.warning
           );
@@ -132,7 +137,15 @@ export class PedidosFacturacionComponent implements OnInit {
       }
     }
   }
-
+  detallePedido(id:number){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.disableClose=false;
+    dialogConfig.data={
+      id:id
+    };
+    this.dialog.open(PedidosDetailComponent,dialogConfig);
+  }
+  
   calcularCambio() {
     let vuelto = this.facturaForm.value.monto - this.total;
     if (vuelto > 0) {

@@ -26,7 +26,7 @@ module.exports.getByIdRestaurante = async (request, response, next) => {
   const restaurante=await prisma.restaurante.findUnique({
       where:{ id:id},
        include: {
-          productos: true,    
+          productos: {where:{estado : 'Habilitado'}}, 
        }
   });
   response.json(restaurante);

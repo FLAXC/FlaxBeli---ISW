@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { D } from 'chart.js/dist/chunks/helpers.core';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/share/authentication.service';
 import { CartUsuarioService } from 'src/app/share/cart-usuario.service';
@@ -10,6 +13,7 @@ import {
   NotificacionService,
   TipoMessage,
 } from 'src/app/share/notificacion-service.service';
+import { PedidosDetailComponent } from '../pedidos-detail/pedidos-detail.component';
 
 @Component({
   selector: 'app-pedidos-factura-cliente',
@@ -32,7 +36,9 @@ export class PedidosFacturaClienteComponent implements OnInit {
     private authService: AuthenticationService,
     private cartUsuarioService: CartUsuarioService,
     private noti: NotificacionService,
-    private gService: GenericService
+    private gService: GenericService,
+    private dialog:MatDialog,
+    private router: Router,
   ) {this.formularioReactive();}
 
   ngOnInit(): void {
@@ -56,7 +62,7 @@ export class PedidosFacturaClienteComponent implements OnInit {
     });
   }
 
-  registrarOrden() {
+  registrarPedido() {
     this.authService.currentUser.subscribe((x) => (this.currentUser = x));
     if (this.cartUsuarioService.getItems != null) {
       //Obtener todo lo necesario para crear la orden
@@ -84,48 +90,62 @@ export class PedidosFacturaClienteComponent implements OnInit {
           this.noti.mensaje('Pedido', 'Pedido registrada', TipoMessage.success);
           this.cartUsuarioService.deleteCart();
           this.total = this.cartUsuarioService.getTotal();
+          this.detallePedido(respuesta.id);
+          this.router.navigate(['/pedidos/productos']);
           console.log(respuesta);
         });
     } else {
       this.noti.mensaje(
-        'Orden',
+        'Pedido',
         'Agregue productos a la orden',
         TipoMessage.warning
       );
     }
   }
-
+  openPDF() {
+    let DATA: any = "fdsf";
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('reporte.pdf');
+    });
+  }
+  
   validacionesPedido() {
     if (this.facturaForm.invalid) {
       if (this.facturaForm.value.tipoPago == 'Efectivo') {
         if (this.facturaForm.value.monto >= this.total) {
-          this.registrarOrden();
+          this.registrarPedido();
           return;
         } else {
-          this.noti.mensaje('orden', 'El monto es menor', TipoMessage.warning);
+          this.noti.mensaje('Pedido', 'El monto es menor', TipoMessage.warning);
           return;
         }
       }
       this.noti.mensaje(
-        'orden',
+        'Pedido',
         'La tarjeta o el código no cumplen los requisitos',
         TipoMessage.warning
       );
     } else {
       if (this.facturaForm.value.tipoPago == 'Tarjeta') {
-        this.registrarOrden();
+        this.registrarPedido();
         this.noti.mensaje(
-          'orden',
+          'Pedido',
           'Cumple todos los requisitos',
           TipoMessage.success
         );
       }
       if (this.facturaForm.value.tipoPago == 'Ambas') {
         if (this.facturaForm.value.monto > 0) {
-          this.registrarOrden();
+          this.registrarPedido();
         } else {
           this.noti.mensaje(
-            'orden',
+            'Pedido',
             'El monto debe ser mayor a cero',
             TipoMessage.warning
           );
@@ -133,6 +153,15 @@ export class PedidosFacturaClienteComponent implements OnInit {
         }
       }
     }
+  }
+
+  detallePedido(id:number){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.disableClose=false;
+    dialogConfig.data={
+      id:id
+    };
+    this.dialog.open(PedidosDetailComponent,dialogConfig);
   }
 
   calcularCambio() {

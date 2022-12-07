@@ -137,7 +137,7 @@
 <h1>Restaurante Flax-Beli #3</h1>
     <mat-grid-list  [cols]="3" rowHeight="12em" gutterSize="10px"  *ngIf="datos">
       <ng-container class="container" *ngFor="let item of datos"> 
-      <mat-grid-tile *ngIf="currentUser.user.role !='Empleado'  && item.restauranteId==4043 || currentUser.user.restauranteId==2043  && item.restauranteId==4043">
+      <mat-grid-tile *ngIf="currentUser.user.role !='Empleado'  && item.restauranteId==4043 || currentUser.user.restauranteId==4043  && item.restauranteId==4043">
         <mat-card class="dashboard-card">
           <mat-card-header *ngIf="item.estadoMesa == 'Ocupada'" style="color:red;">
             <mat-card-title>

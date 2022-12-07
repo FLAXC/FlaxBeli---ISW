@@ -14,7 +14,6 @@ const routes: Routes = [
   {path:'usuarios/update/:id', component: UsuariosFormComponent,  canActivate:[AuthGuard], data:{
     roles:['Administrador']
   }},
-
 ];
 
 @NgModule({
