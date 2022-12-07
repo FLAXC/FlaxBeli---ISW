@@ -31,6 +31,7 @@ export class PedidosOrdenComponent implements OnInit {
   datosDialog: any;
   idResta:any;
   currentUser: any;
+  idMesa:any;
   constructor(
     private authService: AuthenticationService,
     private cartService: CartService,
@@ -52,6 +53,8 @@ export class PedidosOrdenComponent implements OnInit {
     })
     this.total=this.cartService.getTotal();
     this.listaProductos(this.idResta); 
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
+    this.idMesa=this.cartService.idMesa;
   }
 
   obtenerNotas(item: any) {

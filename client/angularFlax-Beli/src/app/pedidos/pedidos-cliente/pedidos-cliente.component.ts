@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CartUsuarioService } from 'src/app/share/cart-usuario.service';
 import { AuthenticationService } from 'src/app/share/authentication.service';
+
 @Component({
   selector: 'app-pedidos-cliente',
   templateUrl: './pedidos-cliente.component.html',
@@ -52,6 +53,7 @@ export class PedidosClienteComponent implements OnInit {
     })
     this.total=this.cartUsuarioService.getTotal();
     this.listaProductos(this.idResta); 
+    this.authService.currentUser.subscribe((x) => (this.currentUser = x));
   }
 
   obtenerNotas(item: any) {
@@ -85,6 +87,7 @@ export class PedidosClienteComponent implements OnInit {
     };
     this.dialog.open(ProductosDetailComponent ,dialogConfig);
   }
+
 
   actualizarCantidad(item: any) {
     this.cartUsuarioService.addToCart(item);

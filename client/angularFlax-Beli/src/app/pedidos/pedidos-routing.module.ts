@@ -8,7 +8,8 @@ import { PedidosProductosComponent } from './pedidos-productos/pedidos-productos
 import { PedidosFacturacionComponent } from './pedidos-facturacion/pedidos-facturacion.component';
 import { ReportePdfComponent } from './reporte-pdf/reporte-pdf.component';
 import { ReporteGraficoComponent } from './reporte-grafico/reporte-grafico.component';
-import { PedidosFacturaClienteComponent } from './pedidos-factura-cliente/pedidos-factura-cliente.component'; 
+import { PedidosFacturaClienteComponent } from './pedidos-factura-cliente/pedidos-factura-cliente.component';
+import { MesasIndexComponent } from '../mesas-restaurante/mesas-index/mesas-index.component';
 const routes: Routes = [
   {
     path: 'pedidos/all',
@@ -26,6 +27,9 @@ const routes: Routes = [
       roles: ['Administrador', 'Empleado', 'Cliente'],
     },
   },
+  {path:'mesas-restaurante', component: MesasIndexComponent, canActivate:[AuthGuard], data:{
+    roles:['Administrador','Empleado']
+  }},
   {
     path: 'pedidos/cliente/:id',
     component: PedidosClienteComponent,
@@ -37,7 +41,10 @@ const routes: Routes = [
   { path: 'pedidos/productos', component: PedidosProductosComponent },
   { path: 'pedidos/orden/:id', component: PedidosOrdenComponent },
   { path: 'pedidos/facturacion', component: PedidosFacturacionComponent },
-  { path: 'pedidos/facturacionCliente', component: PedidosFacturaClienteComponent  },
+  {
+    path: 'pedidos/facturacionCliente',
+    component: PedidosFacturaClienteComponent,
+  },
   {
     path: 'pedido/rGrafico',
     component: ReporteGraficoComponent,
