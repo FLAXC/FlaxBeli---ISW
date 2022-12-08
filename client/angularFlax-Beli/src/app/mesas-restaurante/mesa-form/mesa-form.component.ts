@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
+import { NotificacionService, TipoMessage } from 'src/app/share/notificacion-service.service';
 
 @Component({
   selector: 'app-mesa-form',
@@ -21,7 +22,7 @@ export class MesaFormComponent implements OnInit {
   isCreate:boolean=true;
 
   constructor(private fb: FormBuilder, private gService: GenericService,
-    private router: Router,private activeRouter: ActivatedRoute) {
+    private router: Router,private activeRouter: ActivatedRoute,private noti: NotificacionService) {
       this.formularioReactive();
       this.listaRestaurantes();
   }
@@ -45,6 +46,11 @@ export class MesaFormComponent implements OnInit {
                 restauranteId:this.mesaInfo.restauranteId,
               })
              });
+             this.noti.mensaje(
+              'Mesa',
+              'Creación de mesa exitosa!',
+              TipoMessage.success
+            );
           }
     
         });
@@ -108,6 +114,11 @@ export class MesaFormComponent implements OnInit {
         queryParams: {update:'true'}
       });
     });
+    this.noti.mensaje(
+      'Mesa',
+      'Actualización de mesa exitosa!',
+      TipoMessage.success
+    );
   }
   onReset() {
     this.submitted = false;

@@ -47,11 +47,17 @@ const routes: Routes = [
   },
   {
     path: 'pedido/rGrafico',
-    component: ReporteGraficoComponent,
+    component: ReporteGraficoComponent,canActivate: [AuthGuard],
+    data: {
+      roles: ['Administrador'],
+    },
   },
   {
     path: 'pedido/rPDF',
-    component: ReportePdfComponent,
+    component: ReportePdfComponent,     canActivate: [AuthGuard],
+    data: {
+      roles: ['Administrador'],
+    },
   },
 ];
 

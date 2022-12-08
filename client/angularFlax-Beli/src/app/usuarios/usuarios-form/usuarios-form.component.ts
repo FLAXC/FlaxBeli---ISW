@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
+import { NotificacionService, TipoMessage } from 'src/app/share/notificacion-service.service';
 
 @Component({
   selector: 'app-usuarios-form',
@@ -23,7 +24,7 @@ export class UsuariosFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder, private gService: GenericService,
-    private router: Router,private activeRouter: ActivatedRoute
+    private router: Router,private activeRouter: ActivatedRoute, private noti: NotificacionService,
   ) {this.formularioReactive();
     this.listaUsuarios();
   }
@@ -98,6 +99,11 @@ export class UsuariosFormComponent implements OnInit {
             queryParams: {create:'true'}
           });
         });
+        this.noti.mensaje(
+          'Usuario',
+          'Creación exitosa!',
+          TipoMessage.success
+        );
       }
 
       actualizarUsuario(){
@@ -112,6 +118,11 @@ export class UsuariosFormComponent implements OnInit {
             queryParams: {update:'true'}
           });
         });
+        this.noti.mensaje(
+          'Usuario',
+          'Actualización exitosa!',
+          TipoMessage.success
+        );
       }
 
       onReset() {
