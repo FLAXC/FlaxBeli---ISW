@@ -10,6 +10,7 @@ import { ProductosDetailComponent } from 'src/app/productos/productos-detail/pro
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AuthenticationService } from 'src/app/share/authentication.service';
+import { PedidosDetailComponent } from '../pedidos-detail/pedidos-detail.component';
 @Component({
   selector: 'app-pedidos-orden',
   templateUrl: './pedidos-orden.component.html',
@@ -149,7 +150,15 @@ export class PedidosOrdenComponent implements OnInit {
     //  TipoMessage.warning);
     // }
    }
-
+   
+   detallePedido(id:number){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.disableClose=false;
+    dialogConfig.data={
+      id:id
+    };
+    this.dialog.open(PedidosDetailComponent,dialogConfig);
+  }
    comprar(id:number){
     this.gService
     .get('producto',id)

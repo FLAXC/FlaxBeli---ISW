@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { GenericService } from 'src/app/share/generic.service';
+import { NotificacionService, TipoMessage } from 'src/app/share/notificacion-service.service';
 
 @Component({
   selector: 'app-producto-form',
@@ -21,7 +22,7 @@ export class ProductoFormComponent implements OnInit {
   isCreate:boolean=true;
 
   constructor(private fb: FormBuilder, private gService: GenericService,
-    private router: Router,private activeRouter: ActivatedRoute) {
+    private router: Router,private activeRouter: ActivatedRoute, private noti: NotificacionService,) {
       this.formularioReactive();
       this.listaRestaurantes();
     
@@ -102,8 +103,14 @@ export class ProductoFormComponent implements OnInit {
       this.respProducto=data;
       this.router.navigate(['/productos/all'],{
         queryParams: {create:'true'}
+        
       });
     });
+    this.noti.mensaje(
+      'Producto',
+      'Creación de producto exitosa!',
+      TipoMessage.success
+    );
   }
 
   actualizarProducto(){
@@ -121,6 +128,11 @@ export class ProductoFormComponent implements OnInit {
         queryParams: {update:'true'}
       });
     });
+    this.noti.mensaje(
+      'Producto',
+      'Actualización de producto exitosa!',
+      TipoMessage.success
+    );
   }
   onReset() {
     this.submitted = false;
